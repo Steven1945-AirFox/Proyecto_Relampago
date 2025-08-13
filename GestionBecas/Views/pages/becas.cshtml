@@ -1,0 +1,199 @@
+﻿
+@{
+    Layout =null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Becas - CUC</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__logo">
+                <div class="logo-placeholder" aria-label="Logo CUC">CUC</div>
+            </div>
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="sr-only">Abrir menú</span>
+                    <span class="nav__toggle-icon"></span>
+                </button>
+                <ul class="nav__menu" id="nav-menu">
+                    <li><a asp-controller="Home" asp-action="Index" class="nav__link">Inicio</a></li>
+                    <li><a asp-controller="Home" asp-action="Becas" class="nav__link nav__link--active" aria-current="page">Becas</a></li>
+                    <li><a asp-controller="Home" asp-action="Fomulario" class="nav__link">Formulario</a></li>
+                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link">Documentos</a></li>
+                    <li><a asp-controller="Home" asp-action="Contacto" class="nav__link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main" role="main">
+        <div class="container">
+            <h1 class="page-title">Información de Becas Socioeconómicas</h1>
+
+            <div class="accordion" id="becas-accordion">
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="consideraciones">
+                            1. Consideraciones Importantes del Trámite
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="consideraciones">
+                        <div class="accordion__body">
+                            <ul>
+                                <li>La información suministrada en este formulario es de carácter confidencial y será utilizada únicamente para efectos de la evaluación socioeconómica.</li>
+                                <li>La Unidad de Trabajo Social se reserva el derecho de verificar la información proporcionada.</li>
+                                <li>Es requisito indispensable estar inscrito en el SINIRUBE/RIS para optar por una beca socioeconómica.</li>
+                                <li>Los formularios deben ser completados en su totalidad y entregados con toda la documentación requerida.</li>
+                                <li>El reglamento completo de becas está disponible en el sitio web oficial del CUC.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="clasificacion">
+                            2. Clasificación de Becas Socioeconómicas
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="clasificacion">
+                        <div class="accordion__body">
+                            <div class="beca-types">
+                                <div class="beca-type">
+                                    <h3>Beca 0</h3>
+                                    <p>Exoneración total de matrícula + apoyo económico sujeto a disponibilidad presupuestaria</p>
+                                </div>
+                                <div class="beca-type">
+                                    <h3>Beca 1</h3>
+                                    <p>Exoneración total de matrícula</p>
+                                </div>
+                                <div class="beca-type">
+                                    <h3>Beca 2</h3>
+                                    <p>Exoneración del 75% de matrícula</p>
+                                </div>
+                                <div class="beca-type">
+                                    <h3>Beca 3</h3>
+                                    <p>Exoneración del 50% de matrícula</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="requisitos">
+                            3. Artículo 21 - Requisitos de Solicitud
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="requisitos">
+                        <div class="accordion__body">
+                            <ol type="a">
+                                <li>Ser estudiante regular del CUC o aspirante a primer ingreso</li>
+                                <li>Demostrar necesidad socioeconómica mediante estudio social</li>
+                                <li>Presentar formulario completo con documentación requerida</li>
+                                <li>Estar inscrito en el SINIRUBE/RIS</li>
+                                <li>Cumplir con los plazos establecidos para la solicitud</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="restricciones">
+                            4. Artículo 22 - Restricciones de Solicitud
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="restricciones">
+                        <div class="accordion__body">
+                            <ol type="a">
+                                <li>No podrán optar estudiantes que hayan sido sancionados disciplinariamente</li>
+                                <li>No aplica para estudiantes con beca de excelencia académica vigente</li>
+                                <li>No se otorgarán becas retroactivas</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="compromisos">
+                            5. Artículo 20 - Compromisos del Estudiante Becado
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="compromisos">
+                        <div class="accordion__body">
+                            <ol type="a">
+                                <li>Mantener un rendimiento académico satisfactorio</li>
+                                <li>Cumplir con las normas disciplinarias de la institución</li>
+                                <li>Informar cambios en su situación socioeconómica</li>
+                                <li>Participar en actividades de proyección social cuando sea requerido</li>
+                                <li>Renovar la solicitud de beca en los períodos establecidos</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="carta-compromiso">
+                            6. Carta de Compromiso Becario
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="carta-compromiso">
+                        <div class="accordion__body">
+                            <p>El estudiante debe firmar una carta de compromiso donde acepta cumplir con todas las obligaciones establecidas en el reglamento de becas.</p>
+                            <a href="formulario.html#carta-compromiso" class="btn btn--secondary">Ver Formulario de Carta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="resolucion">
+                            7. Resolución de la Unidad de Trabajo Social
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="resolucion">
+                        <div class="accordion__body">
+                            <p><strong>Información:</strong> Esta sección es completada internamente por la Unidad de Trabajo Social después de la evaluación del caso. No requiere acción por parte del solicitante.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-actions">
+                <a asp-controller="Home" asp-action="Formulario" class="btn btn--primary">Ir al Formulario</a>
+                <a asp-controller="Home" asp-action="Documentos" class="btn btn--secondary">Ver Documentos Requeridos</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <p class="footer__regulation">
+                    <strong>Reglamento de Becas:</strong> disponible en
+                    <a href="https://www.cuc.ac.cr" target="_blank" rel="noopener">www.cuc.ac.cr</a> (Normativa)
+                </p>
+                <p class="footer__privacy">
+                    Aviso de confidencialidad: Los datos personales proporcionados serán tratados de acuerdo con la normativa de protección de datos vigente.
+                </p>
+                <p class="footer__rights">
+                    © 2025 Colegio Universitario de Cartago. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/acciones.js"></script>
+</body>
+</html>

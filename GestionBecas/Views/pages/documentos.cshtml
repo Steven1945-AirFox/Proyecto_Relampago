@@ -1,0 +1,331 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos Requeridos - CUC</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__logo">
+                <div class="logo-placeholder" aria-label="Logo CUC">CUC</div>
+            </div>
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="sr-only">Abrir menú</span>
+                    <span class="nav__toggle-icon"></span>
+                </button>
+                <ul class="nav__menu" id="nav-menu">
+                    <li><a asp-controller="Home" asp-action="Index" class="nav__link">Inicio</a></li>
+                    <li><a asp-controller="Home" asp-action="Becas" class="nav__link " aria-current="page">Becas</a></li>
+                    <li><a asp-controller="Home" asp-action="Fomulario" class="nav__link">Formulario</a></li>
+                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link nav__link--active" aria-current="page">Documentos</a></li>
+                    <li><a asp-controller="Home" asp-action="Contacto" class="nav__link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main" role="main">
+        <div class="container">
+            <h1 class="page-title">Documentos Requeridos</h1>
+
+            <div class="accordion" id="documentos-accordion">
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="seccion-1">
+                            1. Documentos de Identificación
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="seccion-1">
+                        <div class="accordion__body">
+                            <div class="documents-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qué se debe presentar</th>
+                                            <th>Quién lo debe presentar</th>
+                                            <th>Dónde se consigue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Fotocopia de cédula de identidad</td>
+                                            <td>Solicitante y grupo familiar</td>
+                                            <td>Tribunal Supremo de Elecciones</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Certificación de nacimiento</td>
+                                            <td>Solicitante</td>
+                                            <td>Registro Civil</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="seccion-2">
+                            2. Documentos Académicos
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="seccion-2">
+                        <div class="accordion__body">
+                            <div class="documents-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qué se debe presentar</th>
+                                            <th>Quién lo debe presentar</th>
+                                            <th>Dónde se consigue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Certificación de notas de educación secundaria</td>
+                                            <td>Solicitante</td>
+                                            <td>Ministerio de Educación Pública</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Título de bachiller en educación media</td>
+                                            <td>Solicitante</td>
+                                            <td>Ministerio de Educación Pública</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Historial académico universitario (si aplica)</td>
+                                            <td>Solicitante</td>
+                                            <td>Institución de educación superior</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="seccion-3">
+                            3. Documentos de Ingresos
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="seccion-3">
+                        <div class="accordion__body">
+                            <div class="documents-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qué se debe presentar</th>
+                                            <th>Quién lo debe presentar</th>
+                                            <th>Dónde se consigue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Constancia salarial o colillas de pago (últimos 3 meses)</td>
+                                            <td>Grupo familiar con ingresos</td>
+                                            <td>Empleador</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Declaración de la renta (último período fiscal)</td>
+                                            <td>Grupo familiar con ingresos</td>
+                                            <td>Ministerio de Hacienda</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Constancia de pensión (si aplica)</td>
+                                            <td>Beneficiario de pensión</td>
+                                            <td>CCSS o institución correspondiente</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Declaración jurada de ingresos (actividades independientes)</td>
+                                            <td>Trabajadores independientes</td>
+                                            <td>Formulario del CUC</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="important-note">
+                                <h4>IMPORTANTE:</h4>
+                                <p>Para actividades independientes o informales, debe completar la declaración jurada correspondiente disponible en el formulario.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="seccion-4">
+                            4. Documentos de Bienes
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="seccion-4">
+                        <div class="accordion__body">
+                            <div class="documents-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qué se debe presentar</th>
+                                            <th>Quién lo debe presentar</th>
+                                            <th>Dónde se consigue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Certificación registral de vehículos</td>
+                                            <td>Propietarios de vehículos</td>
+                                            <td>Registro Nacional</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Recibo de marchamo vigente</td>
+                                            <td>Propietarios de vehículos</td>
+                                            <td>INS o aseguradora</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Certificación registral de propiedades</td>
+                                            <td>Propietarios de inmuebles</td>
+                                            <td>Registro Nacional</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Avalúo fiscal de propiedades</td>
+                                            <td>Propietarios de inmuebles</td>
+                                            <td>Municipalidad correspondiente</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="seccion-5">
+                            5. Documentos de Gastos
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="seccion-5">
+                        <div class="accordion__body">
+                            <div class="documents-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qué se debe presentar</th>
+                                            <th>Quién lo debe presentar</th>
+                                            <th>Dónde se consigue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Recibos de servicios públicos (últimos 3 meses)</td>
+                                            <td>Responsable del hogar</td>
+                                            <td>ICE, AyA, Municipalidad</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Contrato de alquiler (si aplica)</td>
+                                            <td>Arrendatario</td>
+                                            <td>Propietario del inmueble</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Constancia de cuotas de préstamos</td>
+                                            <td>Deudor</td>
+                                            <td>Entidad financiera</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Recibos de gastos médicos (si aplica)</td>
+                                            <td>Paciente o responsable</td>
+                                            <td>Centro médico o farmacia</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <h2 class="accordion__header">
+                        <button class="accordion__button" aria-expanded="false" aria-controls="seccion-6">
+                            6. Documentos Especiales
+                        </button>
+                    </h2>
+                    <div class="accordion__content" id="seccion-6">
+                        <div class="accordion__body">
+                            <div class="documents-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qué se debe presentar</th>
+                                            <th>Quién lo debe presentar</th>
+                                            <th>Dónde se consigue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Constancia de inscripción SINIRUBE/RIS</td>
+                                            <td>Solicitante</td>
+                                            <td>IMAS</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Constancia médica (si hay discapacidad)</td>
+                                            <td>Persona con discapacidad</td>
+                                            <td>CCSS o médico especialista</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Resolución de pensión alimentaria (si aplica)</td>
+                                            <td>Beneficiario o obligado</td>
+                                            <td>Juzgado de Familia</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Constancia de estudios (miembros del grupo familiar)</td>
+                                            <td>Estudiantes del grupo familiar</td>
+                                            <td>Institución educativa</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="important-note">
+                                <h4>IMPORTANTE:</h4>
+                                <p>La inscripción en SINIRUBE/RIS es requisito indispensable. Sin este documento no se puede procesar la solicitud.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-actions">
+                <a href="formulario.html" class="btn btn--primary">Ir al Formulario</a>
+                <a href="contacto.html" class="btn btn--secondary">Consultas</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <p class="footer__regulation">
+                    <strong>Reglamento de Becas:</strong> disponible en
+                    <a href="https://www.cuc.ac.cr" target="_blank" rel="noopener">www.cuc.ac.cr</a> (Normativa)
+                </p>
+                <p class="footer__privacy">
+                    Aviso de confidencialidad: Los datos personales proporcionados serán tratados de acuerdo con la normativa de protección de datos vigente.
+                </p>
+                <p class="footer__rights">
+                    © 2025 Colegio Universitario de Cartago. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/acciones.js"></script>
+</body>
+</html>

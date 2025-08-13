@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUC - Bienestar Estudiantil y Calidad de Vida</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__logo">
+                <div class="logo-placeholder" aria-label="Logo CUC">CUC</div>
+            </div>
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="sr-only">Abrir menú</span>
+                    <span class="nav__toggle-icon"></span>
+                </button>
+                <ul class="nav__menu" id="nav-menu">
+                    <li><a asp-controller="Home" asp-action="Index" class="nav__link nav__link--active" aria-current="page">Inicio</a></li>
+                    <li><a  asp-controller="Home" asp-action="Becas"  class="nav__link">Becas</a></li>
+                    <li><a asp-controller="Home" asp-action="Fomulario" class="nav__link">Formulario</a></li>
+                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link">Documentos</a></li>
+                    <li><a asp-controller="Home" asp-action="Contacto" class="nav__link">Contacto</a></li>
+                </ul>
+                
+            </nav>
+        </div>
+    </header>
+
+    <main class="main" role="main">
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero__title">
+                    COLEGIO UNIVERSITARIO DE CARTAGO
+                    <span class="hero__subtitle">Bienestar Estudiantil y Calidad de Vida</span>
+                    <span class="hero__department">Unidad de Trabajo Social</span>
+                </h1>
+            </div>
+        </section>
+
+        <section class="highlight">
+            <div class="container">
+                <div class="card card--highlight">
+                    <h2 class="card__title">Solicitud de Beca IIIC-2025</h2>
+                    <p class="card__text">Proceso de solicitud de becas socioeconómicas para el tercer cuatrimestre 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="notices">
+            <div class="container">
+                <h2 class="section__title">Avisos Importantes</h2>
+                <div class="cards-grid">
+                    <div class="card card--notice">
+                        <h3 class="card__title">Entrega de Formulario y Documentación</h3>
+                        <p class="card__text"><strong>ÚNICAMENTE con cita previa</strong></p>
+                        <div class="card__actions">
+                            <a href="https://bit.ly/2QHshMs" class="btn btn--primary" target="_blank" rel="noopener">
+                                Agendar Cita
+                            </a>
+                        </div>
+                        <p class="card__note">
+                            También disponible en: Asuntos Estudiantiles – Becas – Venta de formulario y Recepción de documentos en el sitio del CUC
+                        </p>
+                    </div>
+
+                    <div class="card card--notice">
+                        <h3 class="card__title">Consultas</h3>
+                        <p class="card__text">
+                            <strong>Del 19 al 23 de mayo de 2025</strong><br>
+                            Horario: 2:00pm – 4:00pm
+                        </p>
+                        <div class="contact-info">
+                            <p><strong>Correos:</strong></p>
+                            <ul>
+                                <li><a href="mailto:becasocioeconomica@cuc.ac.cr">becasocioeconomica@cuc.ac.cr</a></li>
+                                <li><a href="mailto:jarayap@cuc.ac.cr">jarayap@cuc.ac.cr</a></li>
+                            </ul>
+                            <p><strong>Teléfonos:</strong></p>
+                            <ul>
+                                <li><a href="tel:+50625506282">2550-6282</a></li>
+                                <li><a href="tel:+50625506231">2550-6231</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card card--notice">
+                        <h3 class="card__title">Recepción de Formulario</h3>
+                        <p class="card__text">
+                            <strong>Del 26 al 30 de mayo de 2025</strong><br>
+                            Con cita asignada previamente
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="actions">
+            <div class="container">
+                <div class="actions-grid">
+                    <a asp-controller="Home" asp-action="Becas" class="btn btn--primary btn--large">
+                        Información de Becas
+                    </a>
+                    <a asp-controller="Home" asp-action="Formulario" class="btn btn--primary btn--large">
+                        Formulario de Solicitud
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <p class="footer__regulation">
+                    <strong>Reglamento de Becas:</strong> disponible en
+                    <a href="https://www.cuc.ac.cr" target="_blank" rel="noopener">www.cuc.ac.cr</a> (Normativa)
+                </p>
+                <p class="footer__privacy">
+                    Aviso de confidencialidad: Los datos personales proporcionados serán tratados de acuerdo con la normativa de protección de datos vigente.
+                </p>
+                <p class="footer__rights">
+                    © 2025 Colegio Universitario de Cartago. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/acciones.js"></script>
+</body>
+</html>
