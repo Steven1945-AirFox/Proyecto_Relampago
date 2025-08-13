@@ -17,55 +17,57 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GestionBecas
 build_property.RootNamespace = GestionBecas
-build_property.ProjectDir = C:\Users\Katherine\Source\Repos\GestionBecasM\GestionBecas\
+build_property.ProjectDir = S:\Proyectos\Proyecto_Relampago_Becas\Proyecto_Relampago\GestionBecas\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Katherine\Source\Repos\GestionBecasM\GestionBecas
+build_property.MSBuildProjectDirectory = S:\Proyectos\Proyecto_Relampago_Becas\Proyecto_Relampago\GestionBecas
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/Home/Index.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/Home/Privacy.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/pages/becas.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/becas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcYmVjYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/pages/contacto.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/contacto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcY29udGFjdG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/pages/documentos.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/documentos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcZG9jdW1lbnRvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/pages/formulario.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/formulario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcZm9ybXVsYXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/Shared/Error.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/Shared/_ValidationScriptsPartial.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/_ViewImports.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/_ViewStart.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Katherine/Source/Repos/GestionBecasM/GestionBecas/Views/Shared/_Layout.cshtml]
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6kpzlqo3mj
