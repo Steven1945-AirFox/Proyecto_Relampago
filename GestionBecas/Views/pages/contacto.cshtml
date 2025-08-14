@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -8,7 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - CUC</title>
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+    <!-- Updated CSS imports to use modular structure -->
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/components.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/forms.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/tables.css" asp-append-version="true">
 </head>
 <body>
     <header class="header" role="banner">
@@ -23,10 +27,10 @@
                 </button>
                 <ul class="nav__menu" id="nav-menu">
                     <li><a asp-controller="Home" asp-action="Index" class="nav__link">Inicio</a></li>
-                    <li><a asp-controller="Home" asp-action="Becas" class="nav__link" >Becas</a></li>
+                    <li><a asp-controller="Home" asp-action="Becas" class="nav__link   " aria-current="page">Becas</a></li>
                     <li><a asp-controller="Home" asp-action="Fomulario" class="nav__link">Formulario</a></li>
-                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link">Documentos</a></li>
-                    <li><a asp-controller="Home" asp-action="Contacto" class="nav__link nav__link--active" aria-current="page">Contacto</a></li>
+                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link" aria-current="page">Documentos</a></li>
+                    <li><a asp-controller="Home" asp-action="Contacto" class="nav__link nav__link--active">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -73,7 +77,7 @@
                         <div class="contact-item">
                             <h3>Citas</h3>
                             <p>Para entrega de formularios y documentación</p>
-                            <a href="https://bit.ly/2QHshMs" class="btn btn--primary" target="_blank" rel="noopener">
+                            <a href="https://www.cuc.ac.cr/solicitud-de-beca-socioeconomica/" class="btn btn--primary" target="_blank" rel="noopener">
                                 Agendar Cita
                             </a>
                         </div>
@@ -83,10 +87,16 @@
                 <div class="contact-section">
                     <h2 class="section-title">Ubicación</h2>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d648.3525129087622!2d-83.92588971050489!3d9.860964704017322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0dfd57b94198b%3A0xb1508c2cc0f5bff9!2sColegio%20Universitario%20de%20Cartago!5e0!3m2!1ses-419!2scr!4v1755071461807!5m2!1ses-419!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-
-                            title="Ubicación del Colegio Universitario de Cartago">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.8740119894073!2d-83.92858079119989!3d9.86093599019675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0dfd57b94198b%3A0xb1508c2cc0f5bff9!2sColegio%20Universitario%20de%20Cartago!5e0!3m2!1ses-419!2scr!4v1755164400329!5m2!1ses-419!2scr"
+                        width="600"
+                        height="450" 
+                        accesskeystyle="border:0;"
+                        allowfullscreen=""
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Ubicación del Colegio Universitario de Cartago">
                         </iframe>
+                        
                     </div>
                     <div class="address-info">
                         <h3>Dirección</h3>
@@ -167,7 +177,9 @@
         </div>
     </footer>
 
-    <script src="~/js/acciones.js"></script>
+    <!-- Updated JS imports to use modular structure -->
+    <script src="~/js/base.js" asp-append-version="true"></script>
+    <script src="~/js/Validaciones.js" asp-append-version="true"></script>
+    <script src="~/js/ContactForm.js" asp-append-version="true"></script>
 </body>
 </html>
-

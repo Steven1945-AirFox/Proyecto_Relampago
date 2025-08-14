@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestionBecas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d181a58f7310428ab715dff36874c8fab771643f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b95951e3a5856d3ecb6e0350c45df42d66c37499")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestionBecas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestionBecas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

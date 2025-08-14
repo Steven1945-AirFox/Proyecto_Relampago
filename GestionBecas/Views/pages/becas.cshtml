@@ -2,14 +2,17 @@
 @{
     Layout =null;
 }
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información de Becas - CUC</title>
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+    <!-- Updated CSS imports to use modular structure -->
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/components.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/accordion.css" asp-append-version="true">
 </head>
 <body>
     <header class="header" role="banner">
@@ -24,9 +27,9 @@
                 </button>
                 <ul class="nav__menu" id="nav-menu">
                     <li><a asp-controller="Home" asp-action="Index" class="nav__link">Inicio</a></li>
-                    <li><a asp-controller="Home" asp-action="Becas" class="nav__link nav__link--active" aria-current="page">Becas</a></li>
+                    <li><a asp-controller="Home" asp-action="Becas" class="nav__link  nav__link--active " aria-current="page">Becas</a></li>
                     <li><a asp-controller="Home" asp-action="Fomulario" class="nav__link">Formulario</a></li>
-                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link">Documentos</a></li>
+                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link" aria-current="page">Documentos</a></li>
                     <li><a asp-controller="Home" asp-action="Contacto" class="nav__link">Contacto</a></li>
                 </ul>
             </nav>
@@ -171,8 +174,8 @@
             </div>
 
             <div class="page-actions">
-                <a asp-controller="Home" asp-action="Formulario" class="btn btn--primary">Ir al Formulario</a>
-                <a asp-controller="Home" asp-action="Documentos" class="btn btn--secondary">Ver Documentos Requeridos</a>
+                <a href="formulario.html" class="btn btn--primary">Ir al Formulario</a>
+                <a href="documentos.html" class="btn btn--secondary">Ver Documentos Requeridos</a>
             </div>
         </div>
     </main>
@@ -194,6 +197,8 @@
         </div>
     </footer>
 
-    <script src="~/js/acciones.js"></script>
+    
+    <script src="~/js/base.js" asp-append-version="true"></script>
+    <script src="~/js/accordion.js" asp-append-version="true"></script>
 </body>
 </html>

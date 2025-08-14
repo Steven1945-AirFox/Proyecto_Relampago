@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GxVgbCKBsO4=",
+  "dgSpecHash": "sAanJMNG/LY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Katherine\\Source\\Repos\\GestionBecasM\\GestionBecas\\GestionBecas.csproj",
+  "projectFilePath": "C:\\Users\\Katherine\\source\\repos\\GestionBecasLSK\\GestionBecas\\GestionBecas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Katherine\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Katherine\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
