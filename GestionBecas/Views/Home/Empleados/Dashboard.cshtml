@@ -1,4 +1,5 @@
-﻿@{
+﻿@model GestionBecas.Models.GestorBecas_ViewModel
+@{
     Layout = null;
     ViewData["Title"] = "Panel de Control";
 }
@@ -61,6 +62,10 @@
 
         .navbar {
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .progress-thin {
+            height: 5px;
         }
     </style>
 </head>
@@ -126,43 +131,66 @@
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1><i class="bi bi-speedometer2"></i> Panel de Gestión de Becas</h1>
-            <div class="text-muted">Fecha: @DateTime.Now.ToString("dd/MM/yyyy")</div>
+            <div class="text-muted">
+                @if(Model.GestorBecas_PeriodoVigente != null)
+                {
+                    <span>Periodo activo: @Model.GestorBecas_PeriodoVigente.GestorBecas_Descripcion</span>
+                }
+                else
+                {
+                    <span class="text-danger">No hay periodo activo</span>
+                }
+            </div>
         </div>
 
+        <!-- Estadísticas principales -->
         <div class="row g-4">
             <div class="col-md-3">
                 <div class="stat-card">
                     <h5>Solicitudes Recibidas</h5>
-                    <p class="number">245</p>
-                    <small class="text-muted">+12 esta semana</small>
+                    <p class="number">@ViewBag.TotalSolicitudes</p>
+                    <div class="progress progress-thin">
+                        <div class="progress-bar bg-success" style="width: @ViewBag.PorcentajeNuevas%"></div>
+                    </div>
+                    <small class="text-muted">+@ViewBag.SolicitudesEstaSemana esta semana</small>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="stat-card">
                     <h5>En Revisión</h5>
-                    <p class="number">87</p>
-                    <small class="text-muted">Pendientes</small>
+                    <p class="number">@ViewBag.EnRevision</p>
+                    <div class="progress progress-thin">
+                        <div class="progress-bar bg-warning" style="width: @ViewBag.PorcentajeRevision%"></div>
+                    </div>
+                    <small class="text-muted">@ViewBag.PorcentajeRevision% del total</small>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="stat-card">
                     <h5>Aprobadas</h5>
-                    <p class="number">56</p>
-                    <small class="text-muted">Este período</small>
+                    <p class="number">@ViewBag.Aprobadas</p>
+                    <div class="progress progress-thin">
+                        <div class="progress-bar bg-info" style="width: @ViewBag.PorcentajeAprobadas%"></div>
+                    </div>
+                    <small class="text-muted">@ViewBag.PorcentajeAprobadas% de completadas</small>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="stat-card">
                     <h5>Rechazadas</h5>
-                    <p class="number">102</p>
-                    <small class="text-muted">Este período</small>
+                    <p class="number">@ViewBag.Rechazadas</p>
+                    <div class="progress progress-thin">
+                        <div class="progress-bar bg-danger" style="width: @ViewBag.PorcentajeRechazadas%"></div>
+                    </div>
+                    <small class="text-muted">@ViewBag.PorcentajeRechazadas% de completadas</small>
                 </div>
             </div>
         </div>
 
+        <!-- Acciones rápidas -->
         <div class="row mt-4 g-4">
             <div class="col-md-3">
                 <a asp-action="EmpleadosConvocatorias" class="action-button">
@@ -193,6 +221,7 @@
             </div>
         </div>
 
+        <!-- Actividades y alertas -->
         <div class="row mt-4">
             <div class="col-md-8">
                 <div class="card h-100">
@@ -200,29 +229,42 @@
                         <h5 class="mb-0"><i class="bi bi-calendar-event"></i> Próximas Actividades</h5>
                     </div>
                     <div class="card-body">
-                        <div class="list-group">
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">Cierre convocatoria becas</h6>
-                                    <small class="text-muted">15 de Octubre</small>
+                        @if (Model.GestorBecas_PeriodoVigente != null)
+                        {
+                            <div class="list-group">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Periodo actual</h6>
+                                        <small class="text-muted">
+                                            @Model.GestorBecas_PeriodoVigente.GestorBecas_FechaInicio.ToString("dd/MM/yyyy") -
+                                            @Model.GestorBecas_PeriodoVigente.GestorBecas_FechaFinalizacion.ToString("dd/MM/yyyy")
+                                        </small>
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">
+                                        @((Model.GestorBecas_PeriodoVigente.GestorBecas_FechaFinalizacion - DateTime.Now).Days) días
+                                    </span>
                                 </div>
-                                <span class="badge bg-primary rounded-pill">3 días</span>
+
+                                @foreach (var actividad in ViewBag.ProximasActividades)
+                                {
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">@actividad.Nombre</h6>
+                                            <small class="text-muted">@actividad.Fecha.ToString("dd/MM/yyyy")</small>
+                                        </div>
+                                        <span class="badge bg-primary rounded-pill">
+                                            @((actividad.Fecha - DateTime.Now).Days) días
+                                        </span>
+                                    </div>
+                                }
                             </div>
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">Revisión documental</h6>
-                                    <small class="text-muted">18 de Octubre</small>
-                                </div>
-                                <span class="badge bg-primary rounded-pill">6 días</span>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                No hay periodo activo actualmente. Cree una nueva convocatoria para comenzar.
                             </div>
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">Evaluación socioeconómica</h6>
-                                    <small class="text-muted">25 de Octubre</small>
-                                </div>
-                                <span class="badge bg-primary rounded-pill">13 días</span>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -233,18 +275,37 @@
                         <h5 class="mb-0"><i class="bi bi-exclamation-triangle"></i> Alertas Recientes</h5>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-warning">
-                            <h6><i class="bi bi-exclamation-circle"></i> Documentos faltantes</h6>
-                            <small>15 solicitudes requieren documentos adicionales</small>
-                        </div>
-                        <div class="alert alert-danger">
-                            <h6><i class="bi bi-clock"></i> Plazos críticos</h6>
-                            <small>5 solicitudes cerca del plazo límite</small>
-                        </div>
-                        <div class="alert alert-info">
-                            <h6><i class="bi bi-check-circle"></i> Completadas</h6>
-                            <small>32 evaluaciones terminadas hoy</small>
-                        </div>
+                        @if(ViewBag.DocumentosFaltantes > 0)
+                        {
+                            <div class="alert alert-warning">
+                                <h6><i class="bi bi-exclamation-circle"></i> Documentos faltantes</h6>
+                                <small>@ViewBag.DocumentosFaltantes solicitudes requieren documentos adicionales</small>
+                            </div>
+                        }
+                        
+                        @if(ViewBag.PlazosCriticos > 0)
+                        {
+                            <div class="alert alert-danger">
+                                <h6><i class="bi bi-clock"></i> Plazos críticos</h6>
+                                <small>@ViewBag.PlazosCriticos solicitudes cerca del plazo límite</small>
+                            </div>
+                        }
+                        
+                        @if(ViewBag.EvaluacionesCompletadas > 0)
+                        {
+                            <div class="alert alert-info">
+                                <h6><i class="bi bi-check-circle"></i> Completadas</h6>
+                                <small>@ViewBag.EvaluacionesCompletadas evaluaciones terminadas hoy</small>
+                            </div>
+                        }
+                        
+                        @if(ViewBag.SolicitudesPrioritarias > 0)
+                        {
+                            <div class="alert alert-primary">
+                                <h6><i class="bi bi-star"></i> Prioritarias</h6>
+                                <small>@ViewBag.SolicitudesPrioritarias solicitudes con alta prioridad</small>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
