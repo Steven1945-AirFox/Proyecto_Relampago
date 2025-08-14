@@ -1,0 +1,262 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Panel de Control";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema de Becas CUC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .stat-card .number {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #0d6efd;
+                margin: 10px 0 0;
+            }
+
+        .action-button {
+            background: #0d6efd;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+            .action-button:hover {
+                background: #0b5ed7;
+                transform: translateY(-3px);
+                color: white;
+            }
+
+            .action-button i {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-award"></i> Becas CUC - Empleados
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="EmpleadosDashboard">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosConvocatorias">
+                            <i class="bi bi-megaphone"></i> Convocatorias
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSolicitudes">
+                            <i class="bi bi-file-earmark-text"></i> Solicitudes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosEvaluaciones">
+                            <i class="bi bi-clipboard-check"></i> Evaluaciones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosBeneficiarios">
+                            <i class="bi bi-people"></i> Beneficiarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSeguimiento">
+                            <i class="bi bi-graph-up"></i> Seguimiento
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> empleado@cuc.ac.cr
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1><i class="bi bi-speedometer2"></i> Panel de Gestión de Becas</h1>
+            <div class="text-muted">Fecha: @DateTime.Now.ToString("dd/MM/yyyy")</div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h5>Solicitudes Recibidas</h5>
+                    <p class="number">245</p>
+                    <small class="text-muted">+12 esta semana</small>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h5>En Revisión</h5>
+                    <p class="number">87</p>
+                    <small class="text-muted">Pendientes</small>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h5>Aprobadas</h5>
+                    <p class="number">56</p>
+                    <small class="text-muted">Este período</small>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h5>Rechazadas</h5>
+                    <p class="number">102</p>
+                    <small class="text-muted">Este período</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 g-4">
+            <div class="col-md-3">
+                <a asp-action="EmpleadosConvocatorias" class="action-button">
+                    <i class="bi bi-megaphone"></i>
+                    Gestionar Convocatorias
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a asp-action="EmpleadosSolicitudes" class="action-button">
+                    <i class="bi bi-file-earmark-text"></i>
+                    Revisar Solicitudes
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a asp-action="EmpleadosEvaluaciones" class="action-button">
+                    <i class="bi bi-clipboard-check"></i>
+                    Evaluar Solicitudes
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a asp-action="EmpleadosBeneficiarios" class="action-button">
+                    <i class="bi bi-people"></i>
+                    Gestionar Beneficiarios
+                </a>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-calendar-event"></i> Próximas Actividades</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Cierre convocatoria becas</h6>
+                                    <small class="text-muted">15 de Octubre</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">3 días</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Revisión documental</h6>
+                                    <small class="text-muted">18 de Octubre</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">6 días</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Evaluación socioeconómica</h6>
+                                    <small class="text-muted">25 de Octubre</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">13 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="bi bi-exclamation-triangle"></i> Alertas Recientes</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <h6><i class="bi bi-exclamation-circle"></i> Documentos faltantes</h6>
+                            <small>15 solicitudes requieren documentos adicionales</small>
+                        </div>
+                        <div class="alert alert-danger">
+                            <h6><i class="bi bi-clock"></i> Plazos críticos</h6>
+                            <small>5 solicitudes cerca del plazo límite</small>
+                        </div>
+                        <div class="alert alert-info">
+                            <h6><i class="bi bi-check-circle"></i> Completadas</h6>
+                            <small>32 evaluaciones terminadas hoy</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container text-center">
+            <span class="text-muted">Sistema de Gestión de Becas CUC &copy; @DateTime.Now.Year</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Seguimiento de Beneficiarios";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema de Becas CUC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .table-responsive {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .badge-cumple {
+            background-color: #198754;
+        }
+
+        .badge-riesgo {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .badge-nocumple {
+            background-color: #dc3545;
+        }
+
+        .filter-card {
+            margin-bottom: 20px;
+        }
+
+        .progress-thin {
+            height: 10px;
+        }
+
+        .student-card {
+            border-left: 4px solid #0d6efd;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-award"></i> Becas CUC - Seguimiento
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosDashboard">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosConvocatorias">
+                            <i class="bi bi-megaphone"></i> Convocatorias
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSolicitudes">
+                            <i class="bi bi-file-earmark-text"></i> Solicitudes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosEvaluaciones">
+                            <i class="bi bi-clipboard-check"></i> Evaluaciones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosBeneficiarios">
+                            <i class="bi bi-people"></i> Beneficiarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="EmpleadosSeguimiento">
+                            <i class="bi bi-graph-up"></i> Seguimiento
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> empleado@cuc.ac.cr
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1><i class="bi bi-graph-up"></i> Seguimiento de Beneficiarios</h1>
+            <div class="text-muted">Cuatrimestre actual: 2023-II</div>
+        </div>
+
+        <div class="card filter-card">
+            <div class="card-body">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Cuatrimestre</label>
+                            <select class="form-select">
+                                <option>2023-II</option>
+                                <option>2023-I</option>
+                                <option>2022-II</option>
+                                <option>2022-I</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Estado Académico</label>
+                            <select class="form-select">
+                                <option>Todos los estados</option>
+                                <option>Cumple</option>
+                                <option>En riesgo</option>
+                                <option>No cumple</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Buscar</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nombre o cédula">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-funnel"></i> Filtrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Rendimiento Académico</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Estudiante</th>
+                                <th>Carrera</th>
+                                <th>Tipo Beca</th>
+                                <th>Promedio Actual</th>
+                                <th>% Asistencia</th>
+                                <th>Estado</th>
+                                <th>Última Revisión</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>María Rodríguez Pérez</td>
+                                <td>Tecnologías de Información</td>
+                                <td><span class="badge bg-warning">Beca 1</span></td>
+                                <td>86</td>
+                                <td>
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 95%"></div>
+                                    </div>
+                                    <small>95%</small>
+                                </td>
+                                <td><span class="badge badge-cumple">Cumple</span></td>
+                                <td>15/08/2023</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-journal-text"></i> Registrar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ana Martínez Sánchez</td>
+                                <td>Administración</td>
+                                <td><span class="badge bg-info">Beca 2</span></td>
+                                <td>72</td>
+                                <td>
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 85%"></div>
+                                    </div>
+                                    <small>85%</small>
+                                </td>
+                                <td><span class="badge badge-riesgo">En riesgo</span></td>
+                                <td>10/08/2023</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-journal-text"></i> Registrar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-warning">
+                                        <i class="bi bi-exclamation-triangle"></i> Notificar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Méndez Rojas</td>
+                                <td>Electrónica</td>
+                                <td><span class="badge bg-danger">Beca 0</span></td>
+                                <td>65</td>
+                                <td>
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 78%"></div>
+                                    </div>
+                                    <small>78%</small>
+                                </td>
+                                <td><span class="badge badge-nocumple">No cumple</span></td>
+                                <td>05/08/2023</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-journal-text"></i> Registrar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-envelope-exclamation"></i> Notificar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary">
+                        <i class="bi bi-file-earmark-text"></i> Generar Reporte
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Registro de Seguimiento</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Estudiante</label>
+                            <select class="form-select">
+                                <option>Seleccione un estudiante</option>
+                                <option>María Rodríguez Pérez</option>
+                                <option>Ana Martínez Sánchez</option>
+                                <option>Carlos Méndez Rojas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Promedio actual</label>
+                            <input type="number" class="form-control" min="0" max="100">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">% Asistencia</label>
+                            <input type="number" class="form-control" min="0" max="100">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Recomendación</label>
+                            <select class="form-select">
+                                <option>Mantener beca</option>
+                                <option>Advertencia</option>
+                                <option>Suspender beca temporalmente</option>
+                                <option>Cancelar beca</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Observaciones</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> Guardar Seguimiento
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container text-center">
+            <span class="text-muted">Sistema de Gestión de Becas CUC &copy; @DateTime.Now.Year</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

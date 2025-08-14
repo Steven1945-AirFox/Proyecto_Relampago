@@ -24,4 +24,16 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+
+
+
+
+app.MapControllerRoute(
+    name: "gestorBecas",
+    pattern: "gestor-becas",
+    defaults: new { controller = "Home", action = "GestorBecaMenu" });
+
+
 app.Run();
+

@@ -1,0 +1,343 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Gestión de Beneficiarios";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema de Becas CUC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .table-responsive {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .badge-beca0 {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .badge-beca1 {
+            background-color: #fd7e14;
+            color: white;
+        }
+
+        .badge-beca2 {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .badge-beca3 {
+            background-color: #198754;
+            color: white;
+        }
+
+        .filter-card {
+            margin-bottom: 20px;
+        }
+
+        .stats-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+            .stats-card .number {
+                font-size: 1.8rem;
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-award"></i> Becas CUC - Beneficiarios
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosDashboard">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosConvocatorias">
+                            <i class="bi bi-megaphone"></i> Convocatorias
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSolicitudes">
+                            <i class="bi bi-file-earmark-text"></i> Solicitudes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosEvaluaciones">
+                            <i class="bi bi-clipboard-check"></i> Evaluaciones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="EmpleadosBeneficiarios">
+                            <i class="bi bi-people"></i> Beneficiarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSeguimiento">
+                            <i class="bi bi-graph-up"></i> Seguimiento
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> empleado@cuc.ac.cr
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1><i class="bi bi-people"></i> Gestión de Beneficiarios</h1>
+            <div class="text-muted">Mostrando 1-10 de 56 beneficiarios</div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <h5>Beneficiarios Activos</h5>
+                    <p class="number text-primary">56</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <h5>Beca 0</h5>
+                    <p class="number text-danger">12</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <h5>Beca 1</h5>
+                    <p class="number text-warning">25</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <h5>Beca 2</h5>
+                    <p class="number text-success">19</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card filter-card">
+            <div class="card-body">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Período</label>
+                            <select class="form-select">
+                                <option>Todos los períodos</option>
+                                <option selected>2023-II</option>
+                                <option>2023-I</option>
+                                <option>2022-II</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Tipo Beca</label>
+                            <select class="form-select">
+                                <option>Todos los tipos</option>
+                                <option>Beca 0</option>
+                                <option>Beca 1</option>
+                                <option>Beca 2</option>
+                                <option>Beca 3</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Buscar</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nombre o cédula">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-funnel"></i> Filtrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Listado de Beneficiarios</h5>
+                <div>
+                    <button class="btn btn-sm btn-light me-2">
+                        <i class="bi bi-download"></i> Exportar
+                    </button>
+                    <button class="btn btn-sm btn-light">
+                        <i class="bi bi-printer"></i> Imprimir
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Estudiante</th>
+                                <th>Cédula</th>
+                                <th>Carrera</th>
+                                <th>Tipo Beca</th>
+                                <th>Período</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>B2023-001</td>
+                                <td>María Rodríguez Pérez</td>
+                                <td>2-3456-7890</td>
+                                <td>Tecnologías de Información</td>
+                                <td><span class="badge badge-beca1">Beca 1</span></td>
+                                <td>2023-II</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info">
+                                        <i class="bi bi-arrow-repeat"></i> Renovar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-003</td>
+                                <td>Ana Martínez Sánchez</td>
+                                <td>3-4567-8901</td>
+                                <td>Administración</td>
+                                <td><span class="badge badge-beca2">Beca 2</span></td>
+                                <td>2023-II</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info">
+                                        <i class="bi bi-arrow-repeat"></i> Renovar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-005</td>
+                                <td>Carlos Méndez Rojas</td>
+                                <td>1-2345-6789</td>
+                                <td>Electrónica</td>
+                                <td><span class="badge badge-beca0">Beca 0</span></td>
+                                <td>2023-II</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info">
+                                        <i class="bi bi-arrow-repeat"></i> Renovar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-007</td>
+                                <td>Juan Pérez González</td>
+                                <td>1-9876-5432</td>
+                                <td>Big Data</td>
+                                <td><span class="badge badge-beca1">Beca 1</span></td>
+                                <td>2023-II</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info">
+                                        <i class="bi bi-arrow-repeat"></i> Renovar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <button class="btn btn-primary me-2">
+                            <i class="bi bi-megaphone"></i> Publicar Resultados
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="bi bi-envelope"></i> Generar Cartas
+                        </button>
+                    </div>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container text-center">
+            <span class="text-muted">Sistema de Gestión de Becas CUC &copy; @DateTime.Now.Year</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

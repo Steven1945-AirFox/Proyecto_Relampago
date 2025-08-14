@@ -1,0 +1,344 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Evaluación de Solicitudes";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema de Becas CUC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .table-responsive {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .badge-pendiente {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .badge-aprobado {
+            background-color: #198754;
+        }
+
+        .badge-rechazado {
+            background-color: #dc3545;
+        }
+
+        .badge-evaluacion {
+            background-color: #0dcaf0;
+            color: #000;
+        }
+
+        .filter-card {
+            margin-bottom: 20px;
+        }
+
+        .evaluation-stats {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-award"></i> Becas CUC - Evaluaciones
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosDashboard">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosConvocatorias">
+                            <i class="bi bi-megaphone"></i> Convocatorias
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSolicitudes">
+                            <i class="bi bi-file-earmark-text"></i> Solicitudes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="EmpleadosEvaluaciones">
+                            <i class="bi bi-clipboard-check"></i> Evaluaciones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosBeneficiarios">
+                            <i class="bi bi-people"></i> Beneficiarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSeguimiento">
+                            <i class="bi bi-graph-up"></i> Seguimiento
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> empleado@cuc.ac.cr
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1><i class="bi bi-clipboard-check"></i> Evaluación de Solicitudes</h1>
+            <div class="text-muted">Mostrando 1-10 de 87 evaluaciones pendientes</div>
+        </div>
+
+        <div class="evaluation-stats">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Presupuesto Disponible</h5>
+                    <div class="d-flex justify-content-between">
+                        <span>₡25,000,000</span>
+                        <span class="text-muted">100%</span>
+                    </div>
+                    <div class="progress mt-2">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Presupuesto Asignado</h5>
+                    <div class="d-flex justify-content-between">
+                        <span>₡18,750,000</span>
+                        <span class="text-muted">75%</span>
+                    </div>
+                    <div class="progress mt-2">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Solicitudes por Evaluar</h5>
+                    <div class="d-flex justify-content-between">
+                        <span>34</span>
+                        <span class="text-muted">de 245</span>
+                    </div>
+                    <div class="progress mt-2">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 14%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card filter-card">
+            <div class="card-body">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Carrera</label>
+                            <select class="form-select">
+                                <option>Todas las carreras</option>
+                                <option selected>Tecnologías de Información</option>
+                                <option>Electrónica</option>
+                                <option>Administración</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Tipo Beca</label>
+                            <select class="form-select">
+                                <option>Todos los tipos</option>
+                                <option>Beca 0</option>
+                                <option selected>Beca 1</option>
+                                <option>Beca 2</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Buscar</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nombre o cédula">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-funnel"></i> Filtrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Solicitudes para Evaluación</h5>
+                <div>
+                    <button class="btn btn-sm btn-light me-2">
+                        <i class="bi bi-download"></i> Exportar
+                    </button>
+                    <button class="btn btn-sm btn-light">
+                        <i class="bi bi-printer"></i> Imprimir
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Estudiante</th>
+                                <th>Carrera</th>
+                                <th>Promedio</th>
+                                <th>Ingreso Per Cápita</th>
+                                <th>Puntaje Socio</th>
+                                <th>Puntaje Acad</th>
+                                <th>Total</th>
+                                <th>Recomendación</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>B2023-001</td>
+                                <td>María Rodríguez Pérez</td>
+                                <td>Tecnologías de Información</td>
+                                <td>85</td>
+                                <td>₡1,000</td>
+                                <td>80</td>
+                                <td>85</td>
+                                <td>82.5</td>
+                                <td>Beca 1</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-clipboard-check"></i> Evaluar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="bi bi-check-circle"></i> Asignar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-003</td>
+                                <td>Ana Martínez Sánchez</td>
+                                <td>Administración</td>
+                                <td>78</td>
+                                <td>₡2,500</td>
+                                <td>60</td>
+                                <td>78</td>
+                                <td>69</td>
+                                <td>Beca 2</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-clipboard-check"></i> Evaluar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="bi bi-check-circle"></i> Asignar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-005</td>
+                                <td>Carlos Méndez Rojas</td>
+                                <td>Electrónica</td>
+                                <td>92</td>
+                                <td>₡800</td>
+                                <td>90</td>
+                                <td>92</td>
+                                <td>91</td>
+                                <td>Beca 0</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-clipboard-check"></i> Evaluar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="bi bi-check-circle"></i> Asignar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-007</td>
+                                <td>Juan Pérez González</td>
+                                <td>Big Data</td>
+                                <td>88</td>
+                                <td>₡1,200</td>
+                                <td>75</td>
+                                <td>88</td>
+                                <td>81.5</td>
+                                <td>Beca 1</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-clipboard-check"></i> Evaluar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="bi bi-check-circle"></i> Asignar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <button class="btn btn-primary me-2">
+                            <i class="bi bi-check-all"></i> Aprobar Selección
+                        </button>
+                        <button class="btn btn-outline-secondary">
+                            <i class="bi bi-file-earmark-text"></i> Generar Reporte
+                        </button>
+                    </div>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container text-center">
+            <span class="text-muted">Sistema de Gestión de Becas CUC &copy; @DateTime.Now.Year</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

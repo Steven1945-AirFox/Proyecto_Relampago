@@ -3,8 +3,48 @@
   "WorkspaceRootPath": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\models\\becaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\models\\becaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\empleados\\seguimiento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\empleados\\seguimiento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\empleados\\beneficiarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\empleados\\beneficiarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\empleados\\convocatorias.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\empleados\\convocatorias.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\empleados\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\empleados\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\empleados\\detallesolicitud.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\empleados\\detallesolicitud.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\empleados\\evaluaciones.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\empleados\\evaluaciones.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\empleados\\solicitudes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\empleados\\solicitudes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\views\\home\\gestorbecamenu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|solutionrelative:gestionbecas\\views\\home\\gestorbecamenu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A5E5AEC-49C4-4E56-8910-1C32EDA5A643}|GestionBecas\\GestionBecas.csproj|s:\\proyectos\\proyecto_relampago_becas\\proyecto_relampago\\gestionbecas\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -47,25 +87,155 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BecaViewModel.cs",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Models\\BecaViewModel.cs",
+              "RelativeDocumentMoniker": "GestionBecas\\Models\\BecaViewModel.cs",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Models\\BecaViewModel.cs",
+              "RelativeToolTip": "GestionBecas\\Models\\BecaViewModel.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAxwCUBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T23:50:17.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Seguimiento.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Seguimiento.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\Empleados\\Seguimiento.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Seguimiento.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\Empleados\\Seguimiento.cshtml",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAiwDoBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T23:00:58.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Beneficiarios.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Beneficiarios.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\Empleados\\Beneficiarios.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Beneficiarios.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\Empleados\\Beneficiarios.cshtml",
+              "ViewState": "AgIAACMBAAAAAAAAAAAiwFYBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T22:59:37.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Evaluaciones.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Evaluaciones.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\Empleados\\Evaluaciones.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Evaluaciones.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\Empleados\\Evaluaciones.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T22:56:32.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DetalleSolicitud.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\DetalleSolicitud.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\Empleados\\DetalleSolicitud.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\DetalleSolicitud.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\Empleados\\DetalleSolicitud.cshtml",
+              "ViewState": "AgIAABoCAAAAAAAAAAAiwE0CAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T22:49:10.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Solicitudes.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Solicitudes.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\Empleados\\Solicitudes.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Solicitudes.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\Empleados\\Solicitudes.cshtml",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAiwBwBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T22:47:23.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Convocatorias.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Convocatorias.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\Empleados\\Convocatorias.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Convocatorias.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\Empleados\\Convocatorias.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8BAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T22:44:32.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\Empleados\\Dashboard.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\Empleados\\Dashboard.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\Empleados\\Dashboard.cshtml",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAiwAUBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T22:43:25.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Program.cs",
+              "RelativeDocumentMoniker": "GestionBecas\\Program.cs",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Program.cs",
+              "RelativeToolTip": "GestionBecas\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T21:04:20.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GestorBecaMenu.cshtml",
+              "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\GestorBecaMenu.cshtml",
+              "RelativeDocumentMoniker": "GestionBecas\\Views\\Home\\GestorBecaMenu.cshtml",
+              "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Views\\Home\\GestorBecaMenu.cshtml",
+              "RelativeToolTip": "GestionBecas\\Views\\Home\\GestorBecaMenu.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-13T21:01:53.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "HomeController.cs",
               "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "GestionBecas\\Controllers\\HomeController.cs",
               "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\Controllers\\HomeController.cs",
               "RelativeToolTip": "GestionBecas\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAA0wD4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-13T19:45:54.609Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\appsettings.json",
               "RelativeDocumentMoniker": "GestionBecas\\appsettings.json",
               "ToolTip": "S:\\Proyectos\\Proyecto_Relampago_Becas\\Proyecto_Relampago\\GestionBecas\\appsettings.json",
               "RelativeToolTip": "GestionBecas\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-08-13T19:41:53.225Z",
               "EditorCaption": ""

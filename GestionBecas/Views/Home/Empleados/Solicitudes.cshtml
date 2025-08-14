@@ -1,0 +1,285 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Solicitudes de Becas";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema de Becas CUC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .table-responsive {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .badge-pendiente {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .badge-completa {
+            background-color: #198754;
+        }
+
+        .badge-incompleta {
+            background-color: #dc3545;
+        }
+
+        .badge-evaluacion {
+            background-color: #0dcaf0;
+            color: #000;
+        }
+
+        .filter-card {
+            margin-bottom: 20px;
+        }
+
+        .action-buttons .btn {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-award"></i> Becas CUC - Solicitudes
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosDashboard">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosConvocatorias">
+                            <i class="bi bi-megaphone"></i> Convocatorias
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="EmpleadosSolicitudes">
+                            <i class="bi bi-file-earmark-text"></i> Solicitudes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosEvaluaciones">
+                            <i class="bi bi-clipboard-check"></i> Evaluaciones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosBeneficiarios">
+                            <i class="bi bi-people"></i> Beneficiarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="EmpleadosSeguimiento">
+                            <i class="bi bi-graph-up"></i> Seguimiento
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> empleado@cuc.ac.cr
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1><i class="bi bi-file-earmark-text"></i> Solicitudes de Becas</h1>
+            <div class="text-muted">Mostrando 1-10 de 245 solicitudes</div>
+        </div>
+
+        <div class="card filter-card">
+            <div class="card-body">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Convocatoria</label>
+                            <select class="form-select">
+                                <option>Todas las convocatorias</option>
+                                <option selected>Becas Socioeconómicas 2023-II</option>
+                                <option>Becas Socioeconómicas 2023-I</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Estado</label>
+                            <select class="form-select">
+                                <option>Todos los estados</option>
+                                <option>Pendiente de revisión</option>
+                                <option>Documentación completa</option>
+                                <option selected>Falta documentación</option>
+                                <option>En evaluación</option>
+                                <option>Aprobada</option>
+                                <option>Rechazada</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Buscar</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nombre o cédula">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-funnel"></i> Filtrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Listado de Solicitudes</h5>
+                <div>
+                    <button class="btn btn-sm btn-light me-2">
+                        <i class="bi bi-download"></i> Exportar
+                    </button>
+                    <button class="btn btn-sm btn-light">
+                        <i class="bi bi-printer"></i> Imprimir
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Estudiante</th>
+                                <th>Cédula</th>
+                                <th>Carrera</th>
+                                <th>Tipo Beca</th>
+                                <th>Fecha Solicitud</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>B2023-001</td>
+                                <td>María Rodríguez Pérez</td>
+                                <td>2-3456-7890</td>
+                                <td>Tecnologías de Información</td>
+                                <td>Beca 0</td>
+                                <td>05/10/2023</td>
+                                <td><span class="badge badge-pendiente">En revisión</span></td>
+                                <td class="action-buttons">
+                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="1" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-info">
+                                        <i class="bi bi-file-earmark"></i> Docs
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-002</td>
+                                <td>Juan González López</td>
+                                <td>1-2345-6789</td>
+                                <td>Electrónica</td>
+                                <td>Beca 1</td>
+                                <td>06/10/2023</td>
+                                <td><span class="badge badge-incompleta">Falta doc.</span></td>
+                                <td class="action-buttons">
+                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="2" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-warning">
+                                        <i class="bi bi-envelope"></i> Solicitar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-003</td>
+                                <td>Ana Martínez Sánchez</td>
+                                <td>3-4567-8901</td>
+                                <td>Administración</td>
+                                <td>Beca 2</td>
+                                <td>07/10/2023</td>
+                                <td><span class="badge badge-completa">Doc. completa</span></td>
+                                <td class="action-buttons">
+                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="3" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="bi bi-clipboard-check"></i> Evaluar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B2023-004</td>
+                                <td>Carlos Méndez Rojas</td>
+                                <td>1-9876-5432</td>
+                                <td>Mecánica Dental</td>
+                                <td>Beca 1</td>
+                                <td>08/10/2023</td>
+                                <td><span class="badge badge-evaluacion">En evaluación</span></td>
+                                <td class="action-buttons">
+                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="4" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-info">
+                                        <i class="bi bi-file-earmark-pdf"></i> PDF
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container text-center">
+            <span class="text-muted">Sistema de Gestión de Becas CUC &copy; @DateTime.Now.Year</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
