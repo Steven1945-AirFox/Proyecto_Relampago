@@ -1,0 +1,113 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GestionBecas
+build_property.RootNamespace = GestionBecas
+build_property.ProjectDir = S:\Proyectos\Proyecto_Relampago_Becas\Proyecto_Relampago\GestionBecas\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = S:\Proyectos\Proyecto_Relampago_Becas\Proyecto_Relampago\GestionBecas
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Empleados/Beneficiarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsZWFkb3NcQmVuZWZpY2lhcmlvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Empleados/Convocatorias.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsZWFkb3NcQ29udm9jYXRvcmlhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Empleados/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsZWFkb3NcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Empleados/DetalleSolicitud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsZWFkb3NcRGV0YWxsZVNvbGljaXR1ZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Empleados/Evaluaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsZWFkb3NcRXZhbHVhY2lvbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Empleados/Seguimiento.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsZWFkb3NcU2VndWltaWVudG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Empleados/Solicitudes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsZWFkb3NcU29saWNpdHVkZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/GestorBecaMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXN0b3JCZWNhTWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/_FormularioConvocatoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfRm9ybXVsYXJpb0NvbnZvY2F0b3JpYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/becas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcYmVjYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/contacto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcY29udGFjdG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/documentos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcZG9jdW1lbnRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/formulario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGFnZXNcZm9ybXVsYXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-6kpzlqo3mj
