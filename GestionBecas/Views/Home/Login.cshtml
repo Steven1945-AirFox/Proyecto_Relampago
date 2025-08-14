@@ -1,0 +1,185 @@
+﻿@*
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/Login.css" />
+
+
+
+    <style>
+        /* ====== Reset básico ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ====== Fondo y centrado ====== */
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ====== Contenedor principal ====== */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* ====== Caja de login ====== */
+        .login-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+            /* ====== Título ====== */
+            .login-box h2 {
+                text-align: center;
+                color: #1e3c72;
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .login-box p {
+                text-align: center;
+                color: #555;
+                margin-bottom: 1.5rem;
+                font-size: 0.95rem;
+            }
+
+        /* ====== Radio buttons ====== */
+        .radio-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1.2rem;
+        }
+
+            .radio-container label {
+                font-size: 0.95rem;
+                color: #333;
+            }
+
+            .radio-container input[type="radio"] {
+                margin-left: 5px;
+                accent-color: #1e3c72;
+            }
+
+        /* ====== Campos de entrada ====== */
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 0.4rem;
+                font-size: 0.9rem;
+                color: #333;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 0.6rem;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                font-size: 0.95rem;
+                outline: none;
+                transition: all 0.2s;
+            }
+
+                .input-group input:focus {
+                    border-color: #1e3c72;
+                    box-shadow: 0 0 4px rgba(30, 60, 114, 0.5);
+                }
+
+        /* ====== Botón ====== */
+        .btn-submit {
+            width: 100%;
+            padding: 0.7rem;
+            background: #1e3c72;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .btn-submit:hover {
+                background: #2a5298;
+            }
+
+        /* ====== Animación ====== */
+        @@keyframes fadeIn {
+            from
+
+        {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        }
+
+        /* ====== Responsividad ====== */
+        @@media (max-width: 480px) {
+            .login-box
+
+        {
+            padding: 1.5rem;
+        }
+
+        .login-box h2 {
+            font-size: 1.5rem;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Sistema de Becas</h2>
+            <p>Accede al sistema de gestión de becas universitarias</p>
+            <form action="#" method="post">
+                <div class="radio-container">
+                    <label for="estudiante">Estudiante</label>
+                    <input type="radio" id="estudiante" name="tipoUsuario" value="estudiante" checked>
+                    <label for="comite">Comité de Becas</label>
+                    <input type="radio" id="comite" name="tipoUsuario" value="comite">
+                </div>
+                <div class="input-group">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
+                </div>
+                <button type="submit" class="btn-submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 

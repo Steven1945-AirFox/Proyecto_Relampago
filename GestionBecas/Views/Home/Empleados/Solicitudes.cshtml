@@ -43,13 +43,69 @@
             margin-right: 5px;
             margin-bottom: 5px;
         }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .stat-card .number {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #0d6efd;
+                margin: 10px 0 0;
+            }
+
+        .action-button {
+            background: #0d6efd;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+            .action-button:hover {
+                background: #0b5ed7;
+                transform: translateY(-3px);
+                color: white;
+            }
+
+            .action-button i {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-thin {
+            height: 5px;
+        }
     </style>
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <i class="bi bi-award"></i> Becas CUC - Solicitudes
+                <i class="bi bi-award"></i> Becas CUC - Empleados
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -57,7 +113,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="EmpleadosDashboard">
+                        <a class="nav-link active" asp-action="EmpleadosDashboard">
                             <i class="bi bi-speedometer2"></i> Dashboard
                         </a>
                     </li>
@@ -67,7 +123,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" asp-action="EmpleadosSolicitudes">
+                        <a class="nav-link" asp-action="EmpleadosSolicitudes">
                             <i class="bi bi-file-earmark-text"></i> Solicitudes
                         </a>
                     </li>
@@ -76,97 +132,48 @@
                             <i class="bi bi-clipboard-check"></i> Evaluaciones
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="EmpleadosBeneficiarios">
-                            <i class="bi bi-people"></i> Beneficiarios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="EmpleadosSeguimiento">
-                            <i class="bi bi-graph-up"></i> Seguimiento
-                        </a>
-                    </li>
+                    
                 </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle"></i> empleado@cuc.ac.cr
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
+
             </div>
         </div>
     </nav>
-
     <div class="container mt-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1><i class="bi bi-file-earmark-text"></i> Solicitudes de Becas</h1>
-            <div class="text-muted">Mostrando 1-10 de 245 solicitudes</div>
-        </div>
+      
 
         <div class="card filter-card">
             <div class="card-body">
-                <form>
+                <form method="get" action="~/Home/EmpleadosSolicitudes">
                     <div class="row g-3">
-                        <div class="col-md-3">
-                            <label class="form-label">Convocatoria</label>
-                            <select class="form-select">
-                                <option>Todas las convocatorias</option>
-                                <option selected>Becas Socioeconómicas 2023-II</option>
-                                <option>Becas Socioeconómicas 2023-I</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-3">
-                            <label class="form-label">Estado</label>
-                            <select class="form-select">
-                                <option>Todos los estados</option>
-                                <option>Pendiente de revisión</option>
-                                <option>Documentación completa</option>
-                                <option selected>Falta documentación</option>
-                                <option>En evaluación</option>
-                                <option>Aprobada</option>
-                                <option>Rechazada</option>
-                            </select>
-                        </div>
-
+                        <!-- Estado -->
                         <div class="col-md-4">
+                            <label class="form-label">Estado</label>
+                            <select class="form-select" name="estado">
+                                <option value="0" selected="@(ViewBag.EstadoSeleccionado == 0)">Todos</option>
+                                <option value="1" selected="@(ViewBag.EstadoSeleccionado == 1)">Pendiente</option>
+                                <option value="5" selected="@(ViewBag.EstadoSeleccionado == 5)">Aprobada</option>
+                                <option value="6" selected="@(ViewBag.EstadoSeleccionado == 6)">Rechazada</option>
+                            </select>
+                        </div>
+
+                        <!-- Búsqueda -->
+                        <div class="col-md-6">
                             <label class="form-label">Buscar</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Nombre o cédula">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </div>
+                            <input type="text" class="form-control" placeholder="Nombre o cédula" name="busqueda" value="@ViewBag.Busqueda">
                         </div>
 
                         <div class="col-md-2 d-flex align-items-end">
-                            <button class="btn btn-primary w-100">
-                                <i class="bi bi-funnel"></i> Filtrar
-                            </button>
+                            <button class="btn btn-primary w-100" type="submit">Filtrar</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <!-- Tabla de solicitudes -->
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
                 <h5 class="mb-0">Listado de Solicitudes</h5>
-                <div>
-                    <button class="btn btn-sm btn-light me-2">
-                        <i class="bi bi-download"></i> Exportar
-                    </button>
-                    <button class="btn btn-sm btn-light">
-                        <i class="bi bi-printer"></i> Imprimir
-                    </button>
-                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -180,106 +187,65 @@
                                 <th>Tipo Beca</th>
                                 <th>Fecha Solicitud</th>
                                 <th>Estado</th>
+                                <th>Resultado</th>
+                                <th>Categoria</th>
+                                <th>Fecha Resolución</th>
+                                <th>Observaciones</th>
+                                <th>Aprueba</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>B2023-001</td>
-                                <td>María Rodríguez Pérez</td>
-                                <td>2-3456-7890</td>
-                                <td>Tecnologías de Información</td>
-                                <td>Beca 0</td>
-                                <td>05/10/2023</td>
-                                <td><span class="badge badge-pendiente">En revisión</span></td>
-                                <td class="action-buttons">
-                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="1" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-eye"></i> Ver
-                                    </a>
-                                    <button class="btn btn-sm btn-outline-info">
-                                        <i class="bi bi-file-earmark"></i> Docs
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>B2023-002</td>
-                                <td>Juan González López</td>
-                                <td>1-2345-6789</td>
-                                <td>Electrónica</td>
-                                <td>Beca 1</td>
-                                <td>06/10/2023</td>
-                                <td><span class="badge badge-incompleta">Falta doc.</span></td>
-                                <td class="action-buttons">
-                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="2" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-eye"></i> Ver
-                                    </a>
-                                    <button class="btn btn-sm btn-outline-warning">
-                                        <i class="bi bi-envelope"></i> Solicitar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>B2023-003</td>
-                                <td>Ana Martínez Sánchez</td>
-                                <td>3-4567-8901</td>
-                                <td>Administración</td>
-                                <td>Beca 2</td>
-                                <td>07/10/2023</td>
-                                <td><span class="badge badge-completa">Doc. completa</span></td>
-                                <td class="action-buttons">
-                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="3" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-eye"></i> Ver
-                                    </a>
-                                    <button class="btn btn-sm btn-outline-success">
-                                        <i class="bi bi-clipboard-check"></i> Evaluar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>B2023-004</td>
-                                <td>Carlos Méndez Rojas</td>
-                                <td>1-9876-5432</td>
-                                <td>Mecánica Dental</td>
-                                <td>Beca 1</td>
-                                <td>08/10/2023</td>
-                                <td><span class="badge badge-evaluacion">En evaluación</span></td>
-                                <td class="action-buttons">
-                                    <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="4" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-eye"></i> Ver
-                                    </a>
-                                    <button class="btn btn-sm btn-outline-info">
-                                        <i class="bi bi-file-earmark-pdf"></i> PDF
-                                    </button>
-                                </td>
-                            </tr>
+                            @foreach (var solicitud in Model)
+                            {
+                                <tr>
+                                    <td>@solicitud.IdSolicitud</td>
+                                    <td>@solicitud.NombreEstudiante</td>
+                                    <td>@solicitud.CedulaEstudiante</td>
+                                    <td>@solicitud.Carrera</td>
+                                    <td>@solicitud.TipoBeca</td>
+                                    <td>@solicitud.FechaSolicitud.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @{
+                                            var estadoBadge = solicitud.Estado switch
+                                            {
+                                                1 => ("En revisión", "badge-pendiente"),
+                                                2 => ("Doc. completa", "badge-completa"),
+                                                3 => ("Falta doc.", "badge-incompleta"),
+                                                4 => ("En evaluación", "badge-evaluacion"),
+                                                5 => ("Aprobada", "bg-success"),
+                                                6 => ("Rechazada", "bg-danger"),
+                                                _ => ("Desconocido", "bg-secondary")
+                                            };
+                                        }
+                                        <span class="badge @estadoBadge.Item2">@estadoBadge.Item1</span>
+                                    </td>
+                                    <td>
+                                        @if (solicitud.Resultado != null)
+                                        {
+                                            @(solicitud.Resultado == 1 ? "Aprobado" : "Rechazado")
+                                        }
+                                        else
+                                        {
+                                            @("-")
+                                        }
+                                    </td>
+                                    <td>@(solicitud.CategoriaBecaSocioeconomicaAsignada ?? "-")</td>
+                                    <td>@(solicitud.FechaResolucion?.ToString("dd/MM/yyyy") ?? "-")</td>
+                                    <td>@(solicitud.Observaciones ?? "-")</td>
+                                    <td>@(solicitud.PersonaAprueba ?? "-")</td>
+                                    <td>
+                                        <a asp-action="EmpleadosDetalleSolicitud" asp-route-id="@solicitud.IdSolicitud" class="btn btn-sm btn-outline-primary">
+                                            Ver
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="card-footer">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center mb-0">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </div>
-
-    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
-        <div class="container text-center">
-            <span class="text-muted">Sistema de Gestión de Becas CUC &copy; @DateTime.Now.Year</span>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

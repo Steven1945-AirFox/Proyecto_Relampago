@@ -64,8 +64,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/Home/_FormularioConvocatoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfRm9ybXVsYXJpb0NvbnZvY2F0b3JpYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [S:/Proyectos/Proyecto_Relampago_Becas/Proyecto_Relampago/GestionBecas/Views/pages/becas.cshtml]

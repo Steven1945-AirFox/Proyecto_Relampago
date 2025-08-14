@@ -291,4 +291,238 @@ namespace GestionBecas.Models
         public string GestorBecas_Revisor { get; set; }
         public string GestorBecas_Aprobador { get; set; }
     }
+
+
+
+
+    public class Convocatoria
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaCierre { get; set; }
+        public string TipoBeca { get; set; }
+        public string Estado { get; set; }
+
+        // Make this optional (nullable)
+        public int? TotalSolicitudes { get; set; }
+    }
+
+    public class DocumentoRequerido
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public bool Obligatorio { get; set; }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // SolicitudBeca.cs
+    public class SolicitudBeca
+    {
+        public int IdSolicitud { get; set; }
+        public string NombreEstudiante { get; set; }
+        public string CedulaEstudiante { get; set; }
+        public string CarnetEstudiante { get; set; }
+        public string Carrera { get; set; }
+        public string TipoBeca { get; set; }
+        public DateTime FechaSolicitud { get; set; }
+        public int Estado { get; set; } // 1=En revisión, 2=Doc. completa, etc.
+        public int? Resultado { get; set; }
+        public int? CategoriaBecaSocioeconomicaAsignada { get; set; }
+        public string Observaciones { get; set; }
+        public DateTime? FechaResolucion { get; set; }
+        public string PersonaSupervisa { get; set; }
+        public string PersonaAprueba { get; set; }
+
+
+
+
+
+
+        // Resolution properties
+        public bool TieneResolucion { get; set; }
+        public int? ResultadoResolucion { get; set; } // 0=Rechazado, 1=Aprobado
+        public int? CategoriaBeca { get; set; } // 1=Beca0, 2=Beca1, etc.
+        public DateTime? gestorFechaResolucion { get; set; }
+        public string ObservacionesResolucion { get; set; }
+
+
+       
+        public DateTime? gestionFechaResolucion { get; set; } // 👈 coincide con tu CSHTML
+    
+
+
+
+
+
+
+
+    }
+
+
+
+    // DetalleSolicitud.cs
+    public class DetalleSolicitud
+    {
+        public int IdSolicitud { get; set; }
+        public string NombreEstudiante { get; set; }
+        public string CedulaEstudiante { get; set; }
+        public string CarnetEstudiante { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public int Edad { get; set; }
+        public string Genero { get; set; }
+        public string EstadoCivil { get; set; }
+        public string Telefono { get; set; }
+        public string Correo { get; set; }
+        public string DireccionExacta { get; set; }
+        public string Provincia { get; set; }
+        public string Canton { get; set; }
+        public string Distrito { get; set; }
+        public string TipoVivienda { get; set; }
+        public int MetrosCuadrados { get; set; }
+        public string Carrera { get; set; }
+        public string NivelCarrera { get; set; }
+        public string NombreColegio { get; set; }
+        public string TipoInstitucion { get; set; }
+        public string NombreConvocatoria { get; set; }
+        public string TipoBeca { get; set; }
+        public DateTime FechaSolicitud { get; set; }
+        public int Estado { get; set; }
+
+        public List<DocumentoSolicitud> Documentos { get; set; }
+        public List<IngresoFamiliar> IngresosFamiliares { get; set; }
+        public List<GastoMensual> GastosMensuales { get; set; }
+    }
+
+    public class DocumentoSolicitud
+    {
+        public string NombreDocumento { get; set; }
+        public int Estado { get; set; } // 1=Presente, 2=Faltante, 3=Incorrecto
+    }
+
+    public class IngresoFamiliar
+    {
+        public string NombreCompleto { get; set; }
+        public string Parentesco { get; set; }
+        public string Ocupacion { get; set; }
+        public decimal IngresoMensual { get; set; }
+    }
+
+    public class GastoMensual
+    {
+        public string NombreGasto { get; set; }
+        public decimal Monto { get; set; }
+    }
+
+
+
+    public class ResolucionBecaViewModel
+    {
+        public int IdResolucion { get; set; }
+        public string CarnetEstudiante { get; set; }
+        public int LineaPobrezaCUC { get; set; }
+        public int SINIRUBE { get; set; }
+        public int RESULTADO { get; set; }
+        public int CategoriaBecaSocieconomicaAsignada { get; set; }
+        public string Observaciones { get; set; }
+        public DateTime FechaResolucion { get; set; }
+        public string PersonaSupervisa { get; set; }
+        public string PersonaAprueba { get; set; }
+    }
+
+
+
+
+
+
+
+
+
+
+    public class SolicitudConResolucionViewModel
+    {
+        // Datos de la solicitud
+        public int IdSolicitud { get; set; }
+        public string NombreEstudiante { get; set; }
+        public string CedulaEstudiante { get; set; }
+        public string Carrera { get; set; }
+        public string TipoBeca { get; set; }
+        public DateTime FechaSolicitud { get; set; }
+        public int Estado { get; set; }
+
+        
+    }
+
+
+
+    public class SolicitudViewModel
+    {
+        public int IdSolicitud { get; set; }
+        public string NombreEstudiante { get; set; }
+        public string CedulaEstudiante { get; set; }
+        public string Carrera { get; set; }
+        public string TipoBeca { get; set; }
+        public DateTime FechaSolicitud { get; set; }
+
+        // Estado: 1=En revisión, 2=Doc. completa, 3=Falta doc., 4=En evaluación, 5=Aprobada, 6=Rechazada
+        public int Estado { get; set; }
+
+        // Resultado: 0=Rechazado, 1=Aprobado, null si aún no hay
+        public int? Resultado { get; set; }
+
+        public string CategoriaBecaSocioeconomicaAsignada { get; set; }
+        public DateTime? FechaResolucion { get; set; }
+        public string Observaciones { get; set; }
+        public string PersonaSupervisa { get; set; }
+        public string PersonaAprueba { get; set; }
+    }
+
+    public class ConvocatoriaViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+    }
+
+
+
+
+
+
+    public class BecaModelView
+    {
+        public int IdSolicitud { get; set; }
+        public string NombreEstudiante { get; set; } // Concatenación de Nombre + Apellidos
+        public string CedulaEstudiante { get; set; } // Identificacion de Usuario
+        public string Carrera { get; set; }
+        public string TipoBeca { get; set; }
+        public DateTime FechaSolicitud { get; set; }
+        public int Estado { get; set; }
+        public int? Resultado { get; set; }
+        public string CategoriaBecaSocioeconomicaAsignada { get; set; }
+        public DateTime? FechaResolucion { get; set; }
+        public string Observaciones { get; set; }
+        public string PersonaSupervisa { get; set; }
+        public string PersonaAprueba { get; set; }
+
+
+    }
+
+
+
+
 }

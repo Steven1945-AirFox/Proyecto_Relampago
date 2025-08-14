@@ -1,6 +1,7 @@
-﻿@{
-    Layout = null;
+﻿@model List<GestionBecas.Models.Convocatoria>
+@{
     ViewData["Title"] = "Gestión de Convocatorias";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -8,15 +9,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Sistema de Becas CUC</title>
+    <title>@ViewData["Title"]</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        .table-responsive {
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
         .badge-active {
             background-color: #198754;
         }
@@ -25,16 +21,28 @@
             background-color: #6c757d;
         }
 
+        .badge-upcoming {
+            background-color: #ffc107;
+            color: #000;
+        }
+
         .action-buttons .btn {
             margin-right: 5px;
+        }
+
+        .table-responsive {
+            max-height: 70vh;
+            overflow-y: auto;
         }
     </style>
 </head>
 <body>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <i class="bi bi-award"></i> Becas CUC - Convocatorias
+                <i class="bi bi-award"></i> Becas CUC - Empleados
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -42,12 +50,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="EmpleadosDashboard">
+                        <a class="nav-link active" asp-action="EmpleadosDashboard">
                             <i class="bi bi-speedometer2"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" asp-action="EmpleadosConvocatorias">
+                        <a class="nav-link" asp-action="EmpleadosConvocatorias">
                             <i class="bi bi-megaphone"></i> Convocatorias
                         </a>
                     </li>
@@ -61,35 +69,32 @@
                             <i class="bi bi-clipboard-check"></i> Evaluaciones
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="EmpleadosBeneficiarios">
-                            <i class="bi bi-people"></i> Beneficiarios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="EmpleadosSeguimiento">
-                            <i class="bi bi-graph-up"></i> Seguimiento
-                        </a>
-                    </li>
+                    
                 </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle"></i> empleado@cuc.ac.cr
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                
             </div>
         </div>
     </nav>
 
+
+
     <div class="container mt-4">
+        <!-- Encabezado y mensajes -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1><i class="bi bi-megaphone"></i> Gestión de Convocatorias</h1>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevaConvocatoriaModal">
@@ -97,208 +102,176 @@
             </button>
         </div>
 
+        <!-- Tabla de convocatorias -->
         <div class="card">
             <div class="card-header bg-primary text-white">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="mb-0">Convocatorias Activas</h5>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar convocatoria...">
-                            <button class="btn btn-light" type="button">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <h5 class="mb-0">Listado de Convocatorias</h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
-                        <thead class="table-light">
+                        <thead>
                             <tr>
                                 <th>Nombre</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Cierre</th>
                                 <th>Estado</th>
-                                <th>Solicitudes</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Becas Socioeconómicas 2023-II</td>
-                                <td>01/10/2023</td>
-                                <td>15/10/2023</td>
-                                <td><span class="badge badge-active text-white">Activa</span></td>
-                                <td>245</td>
-                                <td class="action-buttons">
-                                    <button class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-pencil"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-info">
-                                        <i class="bi bi-eye"></i> Ver
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Becas Socioeconómicas 2023-I</td>
-                                <td>01/03/2023</td>
-                                <td>15/03/2023</td>
-                                <td><span class="badge badge-inactive text-white">Finalizada</span></td>
-                                <td>320</td>
-                                <td class="action-buttons">
-                                    <button class="btn btn-sm btn-outline-primary" disabled>
-                                        <i class="bi bi-pencil"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-info">
-                                        <i class="bi bi-eye"></i> Ver
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Becas Excelencia Académica 2023</td>
-                                <td>01/08/2023</td>
-                                <td>31/08/2023</td>
-                                <td><span class="badge badge-inactive text-white">Finalizada</span></td>
-                                <td>180</td>
-                                <td class="action-buttons">
-                                    <button class="btn btn-sm btn-outline-primary" disabled>
-                                        <i class="bi bi-pencil"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-info">
-                                        <i class="bi bi-eye"></i> Ver
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
-                                </td>
-                            </tr>
+                            @foreach (var convocatoria in Model)
+                            {
+                                <tr>
+                                    <td>@convocatoria.Nombre</td>
+                                    <td>@convocatoria.FechaInicio.ToString("dd/MM/yyyy")</td>
+                                    <td>@convocatoria.FechaCierre.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @if (convocatoria.Estado == "Activa")
+                                        {
+                                            <span class="badge bg-success">@convocatoria.Estado</span>
+                                        }
+                                        else if (convocatoria.Estado == "Pendiente")
+                                        {
+                                            <span class="badge bg-warning text-dark">@convocatoria.Estado</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">@convocatoria.Estado</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary"
+                                                onclick="editarConvocatoria(
+                                                        @convocatoria.Id,
+                                                        '@convocatoria.Nombre',
+                                                        '@convocatoria.Descripcion',
+                                                        '@convocatoria.FechaInicio.ToString("yyyy-MM-dd")',
+                                                        '@convocatoria.FechaCierre.ToString("yyyy-MM-dd")',
+                                                        '@convocatoria.TipoBeca',
+                                                        '@convocatoria.Estado')">
+                                            <i class="bi bi-pencil"></i> Editar
+                                        </button>
+                                        <a href="@Url.Action("VerConvocatoria", new { id = convocatoria.Id })"
+                                           class="btn btn-sm btn-outline-info">
+                                            <i class="bi bi-eye"></i> Ver
+                                        </a>
+                                        <!-- Botón de eliminar -->
+                                        <button class="btn btn-sm btn-outline-danger"
+                                                onclick="confirmarEliminacion(@convocatoria.Id, '@convocatoria.Nombre')">
+                                            <i class="bi bi-trash"></i> Eliminar
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="card-footer">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center mb-0">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
 
     <!-- Modal para nueva convocatoria -->
-    <div class="modal fade" id="nuevaConvocatoriaModal" tabindex="-1" aria-labelledby="nuevaConvocatoriaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="nuevaConvocatoriaModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="nuevaConvocatoriaModalLabel">
-                        <i class="bi bi-plus-circle"></i> Nueva Convocatoria
-                    </h5>
+                    <h5 class="modal-title"><i class="bi bi-plus-circle"></i> Nueva Convocatoria</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form asp-action="CrearConvocatoria" method="post">
+                    <div class="modal-body">
+                        <!-- Campos del formulario -->
+                        @await Html.PartialAsync("_FormularioConvocatoria")
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar convocatoria -->
+    <div class="modal fade" id="editarConvocatoriaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-pencil"></i> Editar Convocatoria</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form asp-action="EditarConvocatoria" method="post">
+                    <input type="hidden" name="Id" id="editId">
+                    <div class="modal-body">
+                        <!-- Campos del formulario (mismos que en creación) -->
+                        @await Html.PartialAsync("_FormularioConvocatoria")
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-exclamation-triangle"></i> Confirmar Eliminación</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="convocatoriaForm">
-                        <div class="mb-3">
-                            <label class="form-label">Título de la Convocatoria</label>
-                            <input type="text" class="form-control" placeholder="Ej: Becas Socioeconómicas 2023-III" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Descripción</label>
-                            <textarea class="form-control" rows="4" placeholder="Describa los detalles de la convocatoria..." required></textarea>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Fecha de Inicio</label>
-                                <input type="date" class="form-control" required>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Fecha de Cierre</label>
-                                <input type="date" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Tipo de Beca</label>
-                            <select class="form-select" required>
-                                <option value="">Seleccione un tipo</option>
-                                <option value="socioeconomica">Socioeconómica</option>
-                                <option value="excelencia">Excelencia Académica</option>
-                                <option value="deportiva">Deportiva</option>
-                                <option value="cultural">Cultural</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Documentos Requeridos</label>
-                            <div class="border p-3 rounded">
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" id="docCedula">
-                                    <label class="form-check-label" for="docCedula">Cédula de identidad</label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" id="docMatricula">
-                                    <label class="form-check-label" for="docMatricula">Constancia de matrícula</label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" id="docNotas">
-                                    <label class="form-check-label" for="docNotas">Certificación de notas</label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" id="docIngresos">
-                                    <label class="form-check-label" for="docIngresos">Constancia de ingresos</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="docResidencia">
-                                    <label class="form-check-label" for="docResidencia">Comprobante de residencia</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <p>¿Está seguro que desea eliminar la convocatoria "<strong id="nombreConvocatoriaEliminar"></strong>"?</p>
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle-fill"></i> Advertencia: Esta acción también eliminará todas las solicitudes asociadas a esta convocatoria.
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-circle"></i> Cancelar
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        <i class="bi bi-save"></i> Guardar Convocatoria
-                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form method="post" asp-action="EliminarConvocatoria">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" id="convocatoriaIdEliminar">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash-fill"></i> Eliminar Convocatoria y Solicitudes
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
-        <div class="container text-center">
-            <span class="text-muted">Sistema de Gestión de Becas CUC &copy; @DateTime.Now.Year</span>
-        </div>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Ejemplo de script para manejar la interfaz
-        document.addEventListener('DOMContentLoaded', function() {
-            // Aquí puedes agregar interactividad si es necesario
-        });
+        // Función para editar convocatoria
+        function editarConvocatoria(id, nombre, descripcion, fechaInicio, fechaCierre, tipoBeca, estado) {
+            document.getElementById('editId').value = id;
+            document.querySelector('#editarConvocatoriaModal [name="Nombre"]').value = nombre;
+            document.querySelector('#editarConvocatoriaModal [name="Descripcion"]').value = descripcion;
+            document.querySelector('#editarConvocatoriaModal [name="FechaInicio"]').value = fechaInicio;
+            document.querySelector('#editarConvocatoriaModal [name="FechaCierre"]').value = fechaCierre;
+            document.querySelector('#editarConvocatoriaModal [name="TipoBeca"]').value = tipoBeca;
+            document.querySelector('#editarConvocatoriaModal [name="Estado"]').value = estado;
+
+            // Mostrar el modal
+            var modal = new bootstrap.Modal(document.getElementById('editarConvocatoriaModal'));
+            modal.show();
+        }
+
+        // Función para confirmar eliminación
+                function confirmarEliminacion(id, nombre) {
+            // Mostrar el ID y nombre en el modal
+            document.getElementById('convocatoriaIdEliminar').value = id;
+            document.getElementById('nombreConvocatoriaEliminar').textContent = nombre;
+
+            // Mostrar el modal
+            var modal = new bootstrap.Modal(document.getElementById('confirmarEliminarModal'));
+            modal.show();
+        }
     </script>
 </body>
 </html>

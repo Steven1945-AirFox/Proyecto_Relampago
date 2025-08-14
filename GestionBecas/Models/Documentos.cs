@@ -10,4 +10,6 @@ public partial class Documentos
     public string Nombre { get; set; } = null!;
 
     public virtual ICollection<DocumentosEstudiante> DocumentosEstudiante { get; set; } = new List<DocumentosEstudiante>();
+
+    public virtual ICollection<Convocatorias> Convocatoria { get; set; } = new List<Convocatorias>();
 }

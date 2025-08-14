@@ -8,8 +8,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Solicitud - CUC</title>
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+    <title>Formulario de Solicitud de Beca Socioeconómica</title>
+   
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/components.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/forms.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/multistepForm.css" asp-append-version="true">
 </head>
 <body>
     <header class="header" role="banner">
@@ -25,9 +30,9 @@
                 <ul class="nav__menu" id="nav-menu">
                     <li><a asp-controller="Home" asp-action="Index" class="nav__link">Inicio</a></li>
                     <li><a asp-controller="Home" asp-action="Becas" class="nav__link " aria-current="page">Becas</a></li>
-                    <li><a asp-controller="Home" asp-action="Fomulario" class="nav__link nav__link--active" aria-current="page">Formulario</a></li>
-                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link">Documentos</a></li>
-                    <li><a asp-controller="Home" asp-action="Contacto" class="nav__link ">Contacto</a></li>
+                    <li><a asp-controller="Home" asp-action="Fomulario" class="nav__link nav__link--active">Formulario</a></li>
+                    <li><a asp-controller="Home" asp-action="Documentos" class="nav__link" aria-current="page">Documentos</a></li>
+                    <li><a asp-controller="Home" asp-action="Contacto" class="nav__link">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -83,7 +88,7 @@
                                 <option value="">Seleccione una carrera</option>
                                 <option value="administracion">Administración de Empresas</option>
                                 <option value="contabilidad">Contabilidad</option>
-                                <option value="informatica">Tegnologia de Informacion</option>
+                                <option value="TI">Tecnologias de Información</option>
                                 <option value="turismo">Turismo</option>
                             </select>
                             <div class="form-error" id="carrera-error"></div>
@@ -185,7 +190,7 @@
                                 <option value="">Seleccione</option>
                                 <option value="femenino">Femenino</option>
                                 <option value="masculino">Masculino</option>
-                                <option value="no-binario">No binario</option>
+                                <option value="otro">Otro</option>
                             </select>
                             <div class="form-error" id="genero-error"></div>
                         </div>
@@ -295,6 +300,614 @@
                     </div>
                 </div>
 
+                <!-- Step 3: Información Académica -->
+                <div class="form-step" id="step-3" style="display: none;">
+                    <h2 class="step-title">III. Información Académica</h2>
+
+                    <div class="form-grid">
+                        <div class="form-group form-group--full">
+                            <label for="colegio-concluyo" class="form-label">Colegio donde concluyó *</label>
+                            <input type="text" id="colegio-concluyo" name="colegioConcluyó" class="form-input" required>
+                            <div class="form-error" id="colegio-concluyo-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tipo-institucion" class="form-label">Tipo de institución *</label>
+                            <select id="tipo-institucion" name="tipoInstitucion" class="form-select" required>
+                                <option value="">Seleccione</option>
+                                <option value="publica">Pública</option>
+                                <option value="privada">Privada</option>
+                            </select>
+                            <div class="form-error" id="tipo-institucion-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="beca-colegio" class="form-label">¿Tuvo beca en el colegio por condición económica? *</label>
+                            <select id="beca-colegio" name="becaColegio" class="form-select" required>
+                                <option value="">Seleccione</option>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="form-error" id="beca-colegio-error"></div>
+                        </div>
+
+                        <div class="conditional-section" id="beca-colegio-details" style="display: none;">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="institucion-beca" class="form-label">Institución que otorgó la beca</label>
+                                    <input type="text" id="institucion-beca" name="institucionBeca" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="monto-beca-colegio" class="form-label">Monto (₡)</label>
+                                    <input type="text" id="monto-beca-colegio" name="montoBecaColegio" class="form-input currency-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="titulos-previos" class="form-label">¿Posee títulos universitarios o parauniversitarios previos? *</label>
+                            <select id="titulos-previos" name="titulosPrevios" class="form-select" required>
+                                <option value="">Seleccione</option>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="form-error" id="titulos-previos-error"></div>
+                        </div>
+
+                        <div class="conditional-section" id="titulos-previos-details" style="display: none;">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="grado-titulo" class="form-label">Grado</label>
+                                    <input type="text" id="grado-titulo" name="gradoTitulo" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="beca-titulo" class="form-label">¿Tuvo beca?</label>
+                                    <select id="beca-titulo" name="becaTitulo" class="form-select">
+                                        <option value="">Seleccione</option>
+                                        <option value="si">Sí</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monto-beca-titulo" class="form-label">Monto (₡)</label>
+                                    <input type="text" id="monto-beca-titulo" name="montoBecaTitulo" class="form-input currency-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Fuente de Ingresos -->
+                <div class="form-step" id="step-4" style="display: none;">
+                    <h2 class="step-title">IV. Fuente de Ingresos</h2>
+                    <p class="step-description">Seleccione todas las fuentes de ingresos que apliquen:</p>
+
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="salarios">
+                            <span class="checkbox-custom"></span>
+                            Salarios
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="empresa-propia">
+                            <span class="checkbox-custom"></span>
+                            Empresa propia
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="profesional-cuenta-propia">
+                            <span class="checkbox-custom"></span>
+                            Profesional por cuenta propia
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="agricultura-ganaderia">
+                            <span class="checkbox-custom"></span>
+                            Agricultura/ganadería
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="otras-actividades">
+                            <span class="checkbox-custom"></span>
+                            Otras actividades por cuenta propia
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="alquileres">
+                            <span class="checkbox-custom"></span>
+                            Alquileres
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="jubilacion-pension">
+                            <span class="checkbox-custom"></span>
+                            Jubilación/pensión no contributivo
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="pension-alimentaria">
+                            <span class="checkbox-custom"></span>
+                            Pensión alimentaria (judicial/voluntaria)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="ayuda-familiares">
+                            <span class="checkbox-custom"></span>
+                            Ayuda familiares/no familiares
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="ayuda-instituciones">
+                            <span class="checkbox-custom"></span>
+                            Ayuda de instituciones
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="intereses-ahorros">
+                            <span class="checkbox-custom"></span>
+                            Intereses/Ahorros
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="fuenteIngresos" value="otros" id="otros-ingresos-check">
+                            <span class="checkbox-custom"></span>
+                            Otros
+                        </label>
+                    </div>
+
+                    <div class="conditional-section" id="otros-ingresos-section" style="display: none;">
+                        <div class="form-group">
+                            <label for="otros-ingresos-detalle" class="form-label">Especifique otros ingresos</label>
+                            <textarea id="otros-ingresos-detalle" name="otrosIngresosDetalle" class="form-textarea" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Tenencia de Bienes -->
+                <div class="form-step" id="step-5" style="display: none;">
+                    <h2 class="step-title">V. Tenencia de Bienes</h2>
+
+                    <h3 class="subsection-title">Muebles (Vehículos)</h3>
+                    <div class="dynamic-table-container">
+                        <table class="dynamic-table" id="vehiculos-table">
+                            <thead>
+                                <tr>
+                                    <th>Propietario</th>
+                                    <th>Placa</th>
+                                    <th>Tipo/Marca</th>
+                                    <th>Año</th>
+                                    <th>Marchamo (₡)</th>
+                                    <th>Uso</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehiculos-tbody">
+                                <!-- Rows will be added dynamically -->
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn--outline btn--small" id="add-vehiculo">
+                            + Agregar Vehículo
+                        </button>
+                    </div>
+
+                    <h3 class="subsection-title">Inmuebles</h3>
+                    <div class="dynamic-table-container">
+                        <table class="dynamic-table" id="inmuebles-table">
+                            <thead>
+                                <tr>
+                                    <th>Propietario</th>
+                                    <th>Tipo</th>
+                                    <th>Extensión m²</th>
+                                    <th>Uso</th>
+                                    <th>¿Genera ingreso mensual?</th>
+                                    <th>Monto (₡)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inmuebles-tbody">
+                                <!-- Rows will be added dynamically -->
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn--outline btn--small" id="add-inmueble">
+                            + Agregar Inmueble
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Información de Vivienda -->
+                <div class="form-step" id="step-6" style="display: none;">
+                    <h2 class="step-title">VI. Información de Vivienda</h2>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="area-construccion" class="form-label">Área de construcción (m²) *</label>
+                            <input type="number" id="area-construccion" name="areaConstruccion" class="form-input" required>
+                            <div class="form-error" id="area-construccion-error"></div>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Aposentos</h3>
+                    <div class="checkbox-grid">
+                        <div class="form-group">
+                            <label for="sala" class="form-label">Sala</label>
+                            <input type="number" id="sala" name="sala" class="form-input" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="comedor" class="form-label">Comedor</label>
+                            <input type="number" id="comedor" name="comedor" class="form-input" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="cocina" class="form-label">Cocina</label>
+                            <input type="number" id="cocina" name="cocina" class="form-input" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="dormitorios" class="form-label">Dormitorios</label>
+                            <input type="number" id="dormitorios" name="dormitorios" class="form-input" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="banos" class="form-label">Baños</label>
+                            <input type="number" id="banos" name="banos" class="form-input" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="otros-aposentos" class="form-label">Otros</label>
+                            <input type="number" id="otros-aposentos" name="otrosAposentos" class="form-input" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Tenencia de la Vivienda</h3>
+                    <div class="form-group">
+                        <fieldset class="form-fieldset">
+                            <legend class="form-legend">Tenencia *</legend>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="tenenciaVivienda" value="alquilada" required>
+                                    <span class="radio-custom"></span>
+                                    Alquilada
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="tenenciaVivienda" value="prestada" required>
+                                    <span class="radio-custom"></span>
+                                    Prestada
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="tenenciaVivienda" value="propia-sin-hipoteca" required>
+                                    <span class="radio-custom"></span>
+                                    Propia sin hipoteca
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="tenenciaVivienda" value="propia-con-hipoteca" required>
+                                    <span class="radio-custom"></span>
+                                    Propia con hipoteca
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <h3 class="subsection-title">Medio de Adquisición</h3>
+                    <div class="form-group">
+                        <fieldset class="form-fieldset">
+                            <legend class="form-legend">¿Cómo se adquirió la vivienda?</legend>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="medioAdquisicion" value="fondos-propios">
+                                    <span class="radio-custom"></span>
+                                    Fondos propios/familiares
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="medioAdquisicion" value="prestamo">
+                                    <span class="radio-custom"></span>
+                                    Préstamo
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="medioAdquisicion" value="herencia">
+                                    <span class="radio-custom"></span>
+                                    Herencia
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="medioAdquisicion" value="bono-vivienda">
+                                    <span class="radio-custom"></span>
+                                    Bono de vivienda
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="medioAdquisicion" value="donacion">
+                                    <span class="radio-custom"></span>
+                                    Donación
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="medioAdquisicion" value="otro">
+                                    <span class="radio-custom"></span>
+                                    Otro
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <!-- Step 7: Ingresos del Grupo Familiar -->
+                <div class="form-step" id="step-7" style="display: none;">
+                    <h2 class="step-title">VII. Ingresos del Grupo Familiar</h2>
+
+                    <div class="dynamic-table-container">
+                        <table class="dynamic-table" id="ingresos-familiares-table">
+                            <thead>
+                                <tr>
+                                    <th>Cédula</th>
+                                    <th>Nombre</th>
+                                    <th>1er Apellido</th>
+                                    <th>2do Apellido</th>
+                                    <th>Edad</th>
+                                    <th>Parentesco</th>
+                                    <th>Estado Civil</th>
+                                    <th>¿Estudia?</th>
+                                    <th>¿Beca?</th>
+                                    <th>Condición de Salud</th>
+                                    <th>Ocupación</th>
+                                    <th>Institución</th>
+                                    <th>Ingreso Mensual Bruto (₡)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ingresos-familiares-tbody">
+                             
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn--outline btn--small" id="add-familiar">
+                            + Agregar Familiar
+                        </button>
+                    </div>
+
+                    <h3 class="subsection-title">Otros Ingresos del Grupo Familiar</h3>
+                    <div class="dynamic-table-container">
+                        <table class="dynamic-table" id="otros-ingresos-familiares-table">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Monto Mensual (₡)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="otros-ingresos-familiares-tbody">
+                                <!-- Rows will be added dynamically -->
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn--outline btn--small" id="add-otro-ingreso-familiar">
+                            + Agregar Otro Ingreso
+                        </button>
+                    </div>
+
+                    <div class="total-section">
+                        <div class="total-display">
+                            <strong>TOTAL DE INGRESOS: <span id="total-ingresos">₡0</span></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8: Egresos del Grupo Familiar -->
+                <div class="form-step" id="step-8" style="display: none;">
+                    <h2 class="step-title">VIII. Egresos del Grupo Familiar</h2>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="egreso-alquiler" class="form-label">Alquiler (₡)</label>
+                            <input type="text" id="egreso-alquiler" name="egresoAlquiler" class="form-input currency-input egreso-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="egreso-hipoteca" class="form-label">Hipoteca (₡)</label>
+                            <input type="text" id="egreso-hipoteca" name="egresoHipoteca" class="form-input currency-input egreso-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="egreso-salud-privada" class="form-label">Salud privada (₡)</label>
+                            <input type="text" id="egreso-salud-privada" name="egresoSaludPrivada" class="form-input currency-input egreso-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="egreso-pension-alimentaria" class="form-label">Pensión alimentaria (fuera del grupo) (₡)</label>
+                            <input type="text" id="egreso-pension-alimentaria" name="egresoPensionAlimentaria" class="form-input currency-input egreso-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="egreso-educacion" class="form-label">Educación (no aplica CUC) (₡)</label>
+                            <input type="text" id="egreso-educacion" name="egresoEducacion" class="form-input currency-input egreso-input">
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Otros Egresos</h3>
+                    <div class="dynamic-table-container">
+                        <table class="dynamic-table" id="otros-egresos-table">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Monto Mensual (₡)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="otros-egresos-tbody">
+                                <!-- Rows will be added dynamically -->
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn--outline btn--small" id="add-otro-egreso">
+                            + Agregar Otro Egreso
+                        </button>
+                    </div>
+
+                    <div class="total-section">
+                        <div class="total-display">
+                            <strong>TOTAL DE EGRESOS: <span id="total-egresos">₡0</span></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 9: Declaración de jurada -->
+                <div class="form-step" id="step-9" style="display: none;">
+                    <h2 class="step-title">IX. Declaración de Jurada</h2>
+
+                    <div class="legal-text">
+                        <p>Declaro bajo la gravedad del juramento que toda la información consignada en este formulario es veraz y que autorizo al Colegio Universitario de Cartago para que verifique la información suministrada en las instituciones correspondientes.</p>
+                        <p>Asimismo, me comprometo a informar cualquier cambio que se presente en mi situación socioeconómica durante el período de vigencia de la beca.</p>
+                        <p>Estoy consciente de que cualquier falsedad u omisión de información relevante será causa suficiente para la cancelación inmediata de la beca otorgada, sin perjuicio de las acciones legales que correspondan.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="acepto-declaracion" name="aceptoDeclaracion" required>
+                            <span class="checkbox-custom"></span>
+                            Acepto bajo gravedad de juramento que toda la información es veraz
+                        </label>
+                        <div class="form-error" id="acepto-declaracion-error"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="cedula-declaracion" class="form-label">Cédula *</label>
+                            <input type="text" id="cedula-declaracion" name="cedulaDeclaracion" class="form-input" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha-declaracion" class="form-label">Fecha *</label>
+                            <input type="date" id="fecha-declaracion" name="fechaDeclaracion" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firma-canvas" class="form-label">Firma *</label>
+                        <div class="signature-container">
+                            <canvas id="firma-canvas" width="400" height="150" class="signature-canvas"></canvas>
+                            <button type="button" class="btn btn--outline btn--small" id="clear-signature">
+                                Limpiar Firma
+                            </button>
+                        </div>
+                        <div class="form-error" id="firma-canvas-error"></div>
+                    </div>
+                </div>
+
+                <!-- Step 10: Puntos Relevantes -->
+                <div class="form-step" id="step-10" style="display: none;">
+                    <h2 class="step-title">X. Puntos Relevantes</h2>
+
+                    <div class="info-section">
+                        <div class="alert alert--info">
+                            <h3>Información Importante</h3>
+                            <ul>
+                                <li>La beca socioeconómica se otorga por cuatrimestre y debe renovarse cada período.</li>
+                                <li>El estudiante debe mantener un rendimiento académico satisfactorio para conservar la beca.</li>
+                                <li>Cualquier cambio en la situación socioeconómica debe ser reportado inmediatamente.</li>
+                                <li>La documentación debe estar completa y actualizada.</li>
+                                <li>El incumplimiento de los compromisos adquiridos resultará en la cancelación de la beca.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 11: Carta de Compromiso -->
+                <div class="form-step" id="step-11" style="display: none;">
+                    <h2 class="step-title">XI. Carta de Compromiso Becario</h2>
+
+                    <div class="legal-text">
+                        <p>Yo, <strong id="nombre-compromiso"></strong>, portador(a) de la cédula de identidad número <strong id="cedula-compromiso"></strong>, me comprometo a:</p>
+                        <ul>
+                            <li>Mantener un rendimiento académico satisfactorio durante todo el período de vigencia de la beca.</li>
+                            <li>Cumplir con todas las obligaciones académicas y administrativas establecidas por el CUC.</li>
+                            <li>Informar inmediatamente cualquier cambio en mi situación socioeconómica.</li>
+                            <li>Participar en las actividades de seguimiento que establezca la Unidad de Trabajo Social.</li>
+                            <li>Utilizar la beca exclusivamente para fines educativos.</li>
+                        </ul>
+                        <p>Entiendo que el incumplimiento de estos compromisos resultará en la cancelación inmediata de la beca otorgada.</p>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fecha-compromiso" class="form-label">Fecha de compromiso *</label>
+                            <input type="date" id="fecha-compromiso" name="fechaCompromiso" class="form-input" required>
+                            <div class="form-error" id="fecha-compromiso-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firma-compromiso-canvas" class="form-label">Firma del compromiso *</label>
+                        <div class="signature-container">
+                            <canvas id="firma-compromiso-canvas" width="400" height="150" class="signature-canvas"></canvas>
+                            <button type="button" class="btn btn--outline btn--small" id="clear-compromiso-signature">
+                                Limpiar Firma
+                            </button>
+                        </div>
+                        <div class="form-error" id="firma-compromiso-canvas-error"></div>
+                    </div>
+                </div>
+
+                <!-- Step 12: Resolución (Solo para uso interno) -->
+                <div class="form-step" id="step-12" style="display: none;">
+                    <h2 class="step-title">XII. Resolución (Solo para uso interno)</h2>
+
+                    <div class="alert alert--warning">
+                        <p><strong>Nota:</strong> Esta sección es únicamente para uso interno de la Unidad de Trabajo Social.</p>
+                    </div>
+
+                    <div class="form-grid" style="opacity: 0.5; pointer-events: none;">
+                        <div class="form-group">
+                            <label for="linea-pobreza-cuc" class="form-label">Línea de pobreza CUC</label>
+                            <input type="text" id="linea-pobreza-cuc" name="lineaPobrezaCuc" class="form-input" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="sinirube" class="form-label">SINIRUBE</label>
+                            <input type="text" id="sinirube" name="sinirube" class="form-input" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="resultado" class="form-label">Resultado</label>
+                            <input type="text" id="resultado" name="resultado" class="form-input" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria" class="form-label">Categoría</label>
+                            <select id="categoria" name="categoria" class="form-select" disabled>
+                                <option value="">Seleccione</option>
+                                <option value="beca-0">Beca 0</option>
+                                <option value="beca-1">Beca 1</option>
+                                <option value="beca-2">Beca 2</option>
+                                <option value="beca-3">Beca 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-group--full">
+                            <label for="observaciones" class="form-label">Observaciones</label>
+                            <textarea id="observaciones" name="observaciones" class="form-textarea" rows="3" disabled></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha-resolucion" class="form-label">Fecha</label>
+                            <input type="date" id="fecha-resolucion" name="fechaResolucion" class="form-input" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="revisado-por" class="form-label">Revisado por</label>
+                            <input type="text" id="revisado-por" name="revisadoPor" class="form-input" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisado-por" class="form-label">Supervisado por</label>
+                            <input type="text" id="supervisado-por" name="supervisadoPor" class="form-input" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 13: Documentos Requeridos -->
+                <div class="form-step" id="step-13" style="display: none;">
+                    <h2 class="step-title">XIII. Documentos Requeridos</h2>
+
+                    <div class="documents-section">
+                        <div class="accordion" id="documents-accordion">
+                            <!-- Document sections will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 14: Declaraciones Juradas Anexas -->
+                <div class="form-step" id="step-14" style="display: none;">
+                    <h2 class="step-title">XIV. Declaraciones Juradas Anexas</h2>
+
+                    <div class="declarations-section">
+                        <div class="declaration-card">
+                            <h3>A) Declaración Jurada de Ingresos de Actividades Independientes y/o Informales</h3>
+                            <p>Complete esta declaración si tiene ingresos por actividades independientes o informales.</p>
+                            <button type="button" class="btn btn--outline" id="open-declaration-a">
+                                Completar Declaración A
+                            </button>
+                        </div>
+
+                        <div class="declaration-card">
+                            <h3>B) Declaración Jurada de Ingresos por Actividades No Laborales</h3>
+                            <p>Complete esta declaración si tiene ingresos por actividades no laborales.</p>
+                            <button type="button" class="btn btn--outline" id="open-declaration-b">
+                                Completar Declaración B
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional steps would continue here... -->
+                <!-- For brevity, I'm showing the structure for the first two steps -->
+
                 <div class="form-navigation">
                     <button type="button" class="btn btn--secondary" id="prev-btn" style="display: none;">Anterior</button>
                     
@@ -303,14 +916,7 @@
                 </div>
             </form>
 
-            <div class="form-actions">
-                <button type="button" class="btn btn--outline" id="print-btn">
-                    <span>📄</span> Imprimir Formulario
-                </button>
-                <button type="button" class="btn btn--outline" id="load-draft-btn">
-                    <span>📁</span> Cargar Borrador
-                </button>
-            </div>
+           
         </div>
     </main>
 
@@ -331,6 +937,9 @@
         </div>
     </footer>
 
-    <script src="~/js/acciones.js"></script>
+    
+    <script src="~/js/base.js" asp-append-version="true"></script>
+    <script src="~/js/Validaciones.js" asp-append-version="true"></script>
+    <script src="~/js/formularios.js" asp-append-version="true"></script>
 </body>
 </html>

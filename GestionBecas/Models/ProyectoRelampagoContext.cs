@@ -23,6 +23,8 @@ public partial class ProyectoRelampagoContext : DbContext
 
     public virtual DbSet<BienesMueblesEstudiante> BienesMueblesEstudiante { get; set; }
 
+    public virtual DbSet<Convocatorias> Convocatorias { get; set; }
+
     public virtual DbSet<DatosAcademicos> DatosAcademicos { get; set; }
 
     public virtual DbSet<Documentos> Documentos { get; set; }
@@ -131,6 +133,35 @@ public partial class ProyectoRelampagoContext : DbContext
                 .HasForeignKey(d => d.CarnetEstudiante)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__BienesMue__carne__49C3F6B7");
+        });
+
+        modelBuilder.Entity<Convocatorias>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Convocat__3214EC07DE9E14F7");
+
+            entity.Property(e => e.Estado)
+                .HasMaxLength(50)
+                .HasDefaultValue("Activa");
+            entity.Property(e => e.FechaCierre).HasColumnType("datetime");
+            entity.Property(e => e.FechaInicio).HasColumnType("datetime");
+            entity.Property(e => e.Nombre).HasMaxLength(255);
+            entity.Property(e => e.TipoBeca).HasMaxLength(100);
+
+            entity.HasMany(d => d.Documento).WithMany(p => p.Convocatoria)
+                .UsingEntity<Dictionary<string, object>>(
+                    "ConvocatoriaDocumentos",
+                    r => r.HasOne<Documentos>().WithMany()
+                        .HasForeignKey("DocumentoId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__Convocato__Docum__06CD04F7"),
+                    l => l.HasOne<Convocatorias>().WithMany()
+                        .HasForeignKey("ConvocatoriaId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__Convocato__Convo__05D8E0BE"),
+                    j =>
+                    {
+                        j.HasKey("ConvocatoriaId", "DocumentoId").HasName("PK__Convocat__400DEEBA1DC0F63D");
+                    });
         });
 
         modelBuilder.Entity<DatosAcademicos>(entity =>

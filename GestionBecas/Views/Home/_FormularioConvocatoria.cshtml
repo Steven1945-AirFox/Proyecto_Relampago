@@ -1,0 +1,63 @@
+﻿
+
+<div class="mb-3">
+    <label class="form-label">Título de la Convocatoria</label>
+    <input type="text" class="form-control" name="Nombre" required>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <textarea class="form-control" name="Descripcion" rows="4" required></textarea>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <label class="form-label">Fecha de Inicio</label>
+        <input type="date" class="form-control" name="FechaInicio" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Fecha de Cierre</label>
+        <input type="date" class="form-control" name="FechaCierre" required>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <label class="form-label">Tipo de Beca</label>
+        <select class="form-select" name="TipoBeca" required>
+            <option value="">Seleccione un tipo</option>
+            <option value="Socioeconómica">Socioeconómica</option>
+            <option value="Excelencia Académica">Excelencia Académica</option>
+            <option value="Deportiva">Deportiva</option>
+            <option value="Cultural">Cultural</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Estado</label>
+        <select class="form-select" name="Estado" required>
+            <option value="Activa">Activa</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Inactiva">Inactiva</option>
+        </select>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Documentos Requeridos</label>
+    <div class="border p-3 rounded">
+        @if (ViewBag.DocumentosRequeridos != null && ((IEnumerable<DocumentoRequerido>)ViewBag.DocumentosRequeridos).Any())
+        {
+            @foreach (var doc in ViewBag.DocumentosRequeridos)
+            {
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="DocumentosRequeridos" value="@doc.Id" id="doc@doc.Id">
+                    <label class="form-check-label" for="doc@doc.Id">@doc.Nombre</label>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">No hay documentos requeridos disponibles</div>
+        }
+    </div>
+</div>
